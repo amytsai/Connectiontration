@@ -1,5 +1,6 @@
 SELECTORS = {
-	loginButton: "#loginButton"
+	loginButton: "#loginButton",
+	overlay: ".overlay"
 }
 
 var myConnections = [];
@@ -61,6 +62,11 @@ function renderLoginButton() {
 		$(SELECTORS.loginButton).html("Log in with LinkedIn");
 	}
 }
+
+function hideOverlay() {
+	$(SELECTORS.overlay).hide(200);
+}
+
 $(document).ready(function() {
 
 });
