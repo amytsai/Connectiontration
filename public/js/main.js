@@ -1,23 +1,48 @@
-SELECTORS = {
-	loginButton: "#loginButton",
-	overlay: ".overlay"
+
+/******* RENDERING HELPERS ********/
+
+Render =  {
+	SELECTORS: {
+		loginButton: "#loginButton",
+		overlay: ".overlay"
+	},
+
+	loginButton: function() {
+		if(IN.User && IN.User.isAuthorized()) {
+			$(this.SELECTORS.loginButton).html("Play");
+		} else {
+			$(this.SELECTORS.loginButton).html("Log in with LinkedIn");
+		}
+	},
+
+	connection: function(member) {
+		result = "<p id=\"" + member.id + "\">";
+		result += "<img src=\"" + member.pictureUrl + "\"/>";
+		result += member.firstName + " "  + member.lastName + "</p>";
+		return result;
+	},
+
+	hideOverlay: function() {
+		$(SELECTORS.overlay).hide(200);
+	}
 }
 
-var myConnections = [];
+/****** LANDING AND AUTHORIZATION *******/
 
 function liLoginClick()  {
 	if(IN.User && IN.User.isAuthorized()){
-		hideOverlay();
+		Render.hideOverlay();
+		onLinkedInAuth();
 	} else {
 		IN.User.authorize(function() {
-			hideOverlay();
+			Render.hideOverlay();
+			onLinkedInAuth();
 		});
 	}
 }
 
 function onLinkedInLoad() {
-	renderLoginButton();
-	IN.Event.on(IN, "auth", onLinkedInAuth);
+	Render.loginButton();
 }
 
 function onLinkedInAuth() {
@@ -25,6 +50,8 @@ function onLinkedInAuth() {
 		.fields("firstName", "lastName", "id", "pictureUrl")
 		.result(filterConnections);
 }
+
+var myConnections = [];
 
 function filterConnections(profiles) {
 	members = profiles.values;
@@ -43,28 +70,9 @@ function displayConnections(connections) {
 	var resultHTML = "";
 	for(var i = 0; i < members.length; i++) {
 		var member = members[i];
-		resultHTML += renderConnection(member);
+		resultHTML += Render.Connection(member);
 	}
 	el.innerHTML = resultHTML;
-}
-
-function renderConnection(member) {
-	result = "<p id=\"" + member.id + "\">";
-	result += "<img src=\"" + member.pictureUrl + "\"/>";
-	result += member.firstName + " "  + member.lastName + "</p>";
-	return result;
-}
-
-function renderLoginButton() {
-	if(IN.User && IN.User.isAuthorized()) {
-		$(SELECTORS.loginButton).html("Play");
-	} else {
-		$(SELECTORS.loginButton).html("Log in with LinkedIn");
-	}
-}
-
-function hideOverlay() {
-	$(SELECTORS.overlay).hide(200);
 }
 
 $(document).ready(function() {
