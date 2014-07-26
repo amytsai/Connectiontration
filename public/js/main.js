@@ -70,7 +70,7 @@ function displayConnections(connections) {
 	var resultHTML = "";
 	for(var i = 0; i < members.length; i++) {
 		var member = members[i];
-		resultHTML += Render.Connection(member);
+		resultHTML += Render.connection(member);
 	}
 	el.innerHTML = resultHTML;
 }
