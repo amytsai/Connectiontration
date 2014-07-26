@@ -1,4 +1,18 @@
+SELECTORS = {
+	loginButton: "#loginButton"
+}
+
 var myConnections = [];
+
+function liLoginClick()  {
+	if(IN.User && IN.User.isAuthorized()){
+		hideOverlay();
+	} else {
+		IN.User.authorize(function() {
+			hideOverlay();
+		});
+	}
+}
 
 function onLinkedInLoad() {
 	IN.Event.on(IN, "auth", onLinkedInAuth);
@@ -38,3 +52,14 @@ function renderConnection(member) {
 	result += member.firstName + " "  + member.lastName + "</p>";
 	return result;
 }
+
+function renderLoginButton() {
+	if(IN.User && IN.User.isAuthorized()) {
+		$(SELECTORS.loginButton).html("Play");
+	} else {
+		$(SELECTORS.loginButton).html("Log in with LinkedIn");
+	}
+}
+$(document).ready(function() {
+	renderLoginButton();
+});
