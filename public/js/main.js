@@ -15,6 +15,7 @@ function liLoginClick()  {
 }
 
 function onLinkedInLoad() {
+	renderLoginButton();
 	IN.Event.on(IN, "auth", onLinkedInAuth);
 }
 
@@ -61,5 +62,5 @@ function renderLoginButton() {
 	}
 }
 $(document).ready(function() {
-	renderLoginButton();
+
 });
