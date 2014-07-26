@@ -23,7 +23,7 @@ Render =  {
 	},
 
 	hideOverlay: function() {
-		$(SELECTORS.overlay).hide(200);
+		$(this.SELECTORS.overlay).hide(200);
 	}
 }
 
