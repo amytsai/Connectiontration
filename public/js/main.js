@@ -293,9 +293,11 @@ Game = {
 
   playAgain: function() {
     Render.hideOverlay();
+    Render.highscore();
     this.matchCount = 0;
     this.clickCount = 0;
     this.score = 1240;
+    Render.score(this.score);
     this.oldSelected = null;
     this.cards = []
     var people = this.getNextPeople(this.peoplePerGame);
@@ -313,8 +315,6 @@ Game = {
       this.cards.push(card2);
     }
     this.cards = this.shuffle(this.cards);
-    Render.score()
-    Render.highScore();
     Render.clearCards();
     Render.cards(this.cards);
   },

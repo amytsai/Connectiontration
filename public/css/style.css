@@ -94,7 +94,7 @@ h4 {
     margin-left: -300px;
     margin-top: -200px;
     background-color: #4183d7; }
-    .overlay .modal h1, .overlay .modal h2, .overlay .modal h4, .overlay .modal h5 {
+    .overlay .modal h1, .overlay .modal h2, .overlay .modal h3, .overlay .modal h4, .overlay .modal h5 {
       text-align: center; }
     .overlay .modal h4, .overlay .modal h3 {
       color: #f5d76e; }
