@@ -186,12 +186,12 @@ Game = {
       var oldCard = this.cards[this.parseId(this.oldSelected)];
       if(newCard.name === oldCard.name) {
         Render.sidebarSuccess();
-        $('body').bind("click", $.proxy(function() {
+        $('body').bind("mousedown", $.proxy(function() {
           this.successfulMatch(this.oldSelected, cardEl);
         }, this));
       } else {
         Render.sidebarFail()
-        $('body').bind("click", $.proxy(function() {
+        $('body').bind("mousedown", $.proxy(function() {
           this.failedMatch(this.oldSelected, cardEl);
         }, this));
       }
@@ -222,7 +222,7 @@ Game = {
   cleanup: function() {
     this.oldSelected = null;
     Render.sidebarClear();
-    $('body').unbind("click");
+    $('body').unbind("mousedown");
     $(".card").bind("click", function() {
       Game.selectCard(this);
     })
