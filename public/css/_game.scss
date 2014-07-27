@@ -47,8 +47,27 @@
 		width: 220px;
 
 		.card-desc {
+			font-size: 1.5em;
 			width: 200px;
 			margin: 10px auto;
+		}
+
+		.success, .fail {
+			font-size: 2em;
+			font-weight: 300;
+			margin: 10px auto
+			&:after {
+				content: "(click to continue)"
+				font-size: 1em;
+				color: black;
+			}
+		}
+
+		.success {
+			color: $green;
+		}
+		.fail {
+			color: $red;
 		}
 	}
 }
