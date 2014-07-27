@@ -92,8 +92,6 @@ h4 {
 
 .row {
   height: 120px; }
-  .row:after {
-    clear: both; }
 
 .card {
   background-color: #81cfe0;
@@ -102,3 +100,5 @@ h4 {
   margin: 10px;
   height: 120px;
   width: 90px; }
+  .card:last-child:after {
+    clear: both; }
