@@ -99,9 +99,7 @@ h4 {
   top: 50%;
   width: 900px; }
   #game #table {
-    float: left;
-    height: 560px;
-    width: 660px; }
+    float: left; }
     #game #table .row {
       height: 140px; }
     #game #table .card {

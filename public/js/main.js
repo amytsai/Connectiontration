@@ -65,17 +65,12 @@ Render =  {
     newEl.className = "card-desc";
     if(card.isPicture) {
       imgEl = document.createElement("img");
-      IN.API.Raw("/people/" + card.id + "/picture-urls::(150x150)")
-        .result($.proxy(function() {
-          imgEl.src = card.pictureUrl;
-          $(newEl).append(imgEl);
-          $(this.SELECTORS.sidebar).append(newEl);
-        }), this);
+      imgEl.src = card.pictureUrl;
+      $(newEl).append(imgEl);
     } else {
       $(newEl).html(card.name);
-      $(this.SELECTORS.sidebar).append(newEl);
     }
-    
+    $(this.SELECTORS.sidebar).append(newEl);
   },
 
   sidebarSuccess: function() {
@@ -152,8 +147,7 @@ Game = {
       var card1 = {
         isPicture: false,
         name: person.firstName + " " + person.lastName,
-        pictureUrl: person.pictureUrl,
-        id: person.id
+        pictureUrl: person.pictureUrl
       }
       this.cards.push(card1);
       var card2 = jQuery.extend({}, card1);
