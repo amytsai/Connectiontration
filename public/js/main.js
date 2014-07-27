@@ -1,4 +1,3 @@
-$(document).ready(function() {
 /******* RENDERING HELPERS ********/
 
 Render =  {
@@ -275,5 +274,3 @@ Game = {
     Render.cards(this.cards);
   }
 }
-
-});
