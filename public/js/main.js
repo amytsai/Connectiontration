@@ -101,7 +101,7 @@ Game = {
       var person = people[i];
       card = {
         isPicture: false,
-        name: person.firstName + " " + person.lastName
+        name: person.firstName + " " + person.lastName,
         pictureUrl: person.pictureUrl
       }
       this.cards.push(card);
