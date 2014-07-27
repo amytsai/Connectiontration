@@ -74,14 +74,14 @@ Render =  {
   sidebarSuccess: function() {
     var newEl = document.createElement("div");
     newEl.className = "success";
-    newEl.html("Its a Match!");
+    $(newEl).html("Its a Match!");
     $(this.SELECTORS.sidebar).append(newEl)
   },
 
   sidebarFail: function() {
     var newEl = document.createElement("div");
     newEl.className = "fail";
-    newEl.html("Not a Match");
+    $(newEl).html("Not a Match");
     $(this.SELECTORS.sidebar).append(newEl);
   }
 
