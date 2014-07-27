@@ -101,7 +101,9 @@ h4 {
   #game #table {
     float: left;
     height: 560px;
-    width: 660px; }
+    width: 660px;
+    #loading-text-margin: 200px auto;
+    #loading-text-width: 50%; }
     #game #table .row {
       height: 140px; }
     #game #table .card {
