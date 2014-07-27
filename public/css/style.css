@@ -53,6 +53,9 @@ h1 {
   font-weight: 200;
   margin: .8em 0; }
 
+h3 {
+  font-size: 2.5em; }
+
 h4 {
   font-size: 1.2em;
   font-weight: 300;
@@ -101,9 +104,10 @@ h4 {
   #game #table {
     float: left;
     height: 560px;
-    width: 660px;
-    #loading-text-margin: 200px auto;
-    #loading-text-width: 50%; }
+    width: 660px; }
+    #game #table #loading-text {
+      margin: 200px auto;
+      width: 50%; }
     #game #table .row {
       height: 140px; }
     #game #table .card {
