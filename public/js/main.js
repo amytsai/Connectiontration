@@ -101,7 +101,7 @@ Game = {
   cards: [],
   location: 0,
   peoplePerGame: 12,
-  oldSelected: {},
+  oldSelected: null,
 
   initialize: function(connections) {
     //TODO: Check whether the user has enough connections to start a game
@@ -151,10 +151,10 @@ Game = {
       var oldCard = this.parseId(this.oldSelected);
       if(newCard.name === oldCard.name) {
         this.successfulMatch(this.oldSelected, cardEl);
-        this.oldSelected = {};
+        this.oldSelected = null;
       } else {
         this.failedMatch(this.oldSelected, cardEl);
-        this.oldSelected = {}
+        this.oldSelected = null;
       }
     }
 
