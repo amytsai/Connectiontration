@@ -192,6 +192,7 @@ Game = {
     this.cards = this.shuffle(this.cards);
     Render.cards(this.cards);
     Render.score(this.score);
+    Render.highscore();
   },
 
   getNextPeople: function(n) {
@@ -301,6 +302,8 @@ Game = {
       this.cards.push(card2);
     }
     this.cards = this.shuffle(this.cards);
+    Render.score()
+    Render.highscore();
     Render.clearCards();
     Render.cards(this.cards);
   },
