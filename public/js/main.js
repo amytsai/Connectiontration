@@ -141,9 +141,11 @@ function fetchLargeImage(filteredConnections) {
     .result($.proxy(function(response) {
       connection.pictureUrl = response.values;
       readyConnections.push(connection);
+      if(i == filteredConnections.length) {
+        Game.initialize(readyConnections);
+      }
     }), this);
   }
-  Game.initialize(readyConnections);
 }
 
 /********* GAME LOGIC *********/
