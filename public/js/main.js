@@ -74,7 +74,7 @@ function onLinkedInAuth() {
 }
 
 function filterConnections(profiles) {
-  var filterConnections = []
+  var filteredConnections = [];
   members = profiles.values;
   for(var i = 0; i < members.length; i++) {
     member = members[i];
