@@ -65,9 +65,9 @@ Render =  {
     newEl.className = "card-desc";
     if(card.isPicture) {
       imgEl = document.createElement("img");
-      IN.API.Raw("/people/" + card.id + "/picture-urls::(150x150)")
-        .result($.proxy(function() {
-          imgEl.src = card.pictureUrl;
+      IN.API.Raw("/people/" + card.id + "/picture-urls::(original)")
+        .result($.proxy(function(response) {
+          imgEl.src = response.values;
           $(newEl).append(imgEl);
           $(this.SELECTORS.sidebar).append(newEl);
         }), this);
@@ -187,8 +187,11 @@ Game = {
     var id = this.parseId(cardEl);
     var newCard = this.cards[id];
 
-    Render.sidebarAdd(newCard);
-    if(this.oldSelected && this.oldSelected != cardEl) {
+    if(this.oldSelected != cardEl) {
+      Render.sidebarAdd(newCard);
+    }
+    
+    if(this.oldSelected) {
       //unbind card click events for next click
       $(".card").unbind("click");
       var oldCard = this.cards[this.parseId(this.oldSelected)];

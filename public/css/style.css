@@ -131,3 +131,6 @@ h4 {
     #game #sidebar .card-desc {
       width: 200px;
       margin: 10px auto; }
+      #game #sidebar .card-desc img {
+        width: 150px;
+        height: 150px; }
