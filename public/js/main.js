@@ -34,7 +34,7 @@ Render =  {
       $(this.SELECTORS.game).append(row);
     }
 
-    $(.card).bind("click", function() {
+    $(".card").bind("click", function() {
       Game.selectCard(this);
     })
   },
