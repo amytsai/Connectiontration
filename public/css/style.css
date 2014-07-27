@@ -137,8 +137,14 @@ h4 {
     min-height: 120px;
     margin: 10px;
     width: 220px; }
-    #game #sidebar #score:before {
-      content: "SCORE: "; }
+    #game #sidebar #score {
+      font-size: 1.3em;
+      font-weight: 300;
+      margin: 10px auto;
+      text-align: center;
+      width: 200px; }
+      #game #sidebar #score:before {
+        content: "SCORE: "; }
     #game #sidebar .card-desc {
       font-size: 1.5em;
       width: 200px;

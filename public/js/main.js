@@ -9,7 +9,7 @@ Render =  {
     overlay: ".overlay",
     modal: ".modal",
     game: "#table",
-    sidebar: "#sidebar",
+    sidebar: "#sidebar-content",
     score: "#score"
   },
 
