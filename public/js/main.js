@@ -67,7 +67,7 @@ Render =  {
     newEl.className = "card-desc";
     if(card.isPicture) {
       imgEl = document.createElement("img");
-      imgEl.src = card.picture-urls;
+      imgEl.src = card.pictureUrl;
       $(newEl).append(imgEl);
     } else {
       $(newEl).html(card.name);
@@ -134,9 +134,8 @@ function filterConnections(profiles) {
 function fetchLargeImage(filteredConnections) {
   var readyConnections = []
   for(var i = 0; i < filteredConnections.length; i++) {
-    var connection = filterConnections[i]
     connection.thumbnailUrl = connection.pictureUrl;
-    IN.API.Raw("/people/" + connection.id + "/picture-urls::(original)")
+    IN.API.Raw("/people/" + card.id + "/picture-urls::(original)")
     .result($.proxy(function(response) {
       connection.pictureUrl = response.values;
       readyConnections.push(connection);
