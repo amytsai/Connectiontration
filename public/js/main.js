@@ -297,6 +297,7 @@ Game = {
     this.clickCount = 0;
     this.score = 1240;
     this.oldSelected = null;
+    this.cards = []
     var people = this.getNextPeople(this.peoplePerGame);
 
     for(var i = 0; i < this.peoplePerGame; i++) {
