@@ -13,6 +13,7 @@ Render =  {
   },
 
   loginButton: function() {
+    $(this.SELECTORS.loginButton).find(".loader").remove();
     if(IN.User && IN.User.isAuthorized()) {
       $(this.SELECTORS.loginButton).html("Play");
     } else {
