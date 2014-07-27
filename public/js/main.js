@@ -142,7 +142,7 @@ Game = {
   }
 
   selectCard: function(cardEl) {
-    cardEl.visibility = "visible";
+    cardEl.style.visibility = "visible";
   }
 }
 
