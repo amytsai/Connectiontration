@@ -181,7 +181,7 @@ Game = {
     var id = this.parseId(cardEl);
     var newCard = this.cards[id];
 
-    Render.sidebarAdd(newCard);
+    //Render.sidebarAdd(newCard);
     if(this.oldSelected && this.oldSelected != cardEl) {
       //unbind card click events for next click
       $(".card").unbind("click");
