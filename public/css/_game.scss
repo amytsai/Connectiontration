@@ -96,17 +96,27 @@
 		width: 220px;
 
 		#high-score {
-			font-size: 1.3em;
-			font-weight: 400;
+			font-size: 1.2em;
+			font-weight: 300;
 			text-align: center;
-			margin: 10 auto;
+			margin: 10px auto;
 			width: 200px;
+
+			&:before {
+				content: "HIGH SCORE: "
+			}
 		}
 
 		#contact {
 			color: $dark-grey;
 			width: 200px;
-			margin: 10 auto;
+			margin: 10px auto;
+		}
+
+		hr {
+			border-style: solid;
+			border-color: $dark-grey;
+			margin: 1em;
 		}
 
 	}

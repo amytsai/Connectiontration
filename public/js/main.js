@@ -10,7 +10,8 @@ Render =  {
     modal: ".modal",
     game: "#table",
     sidebar: "#sidebar-content",
-    score: "#score"
+    score: "#score",
+    highscore: "#highscore"
   },
 
   loginButton: function() {
@@ -97,10 +98,13 @@ Render =  {
   },  
 
   overlayWin: function() {
+    var highScore = localStorage.getItem("_highscore");
+    highScore = highScore ? highScore : 0;
     $(this.SELECTORS.modal).empty();
     $(this.SELECTORS.modal).html(
         "<h1> Congratulations you win! </h1>" + 
         "<h2> Your Score:" + Game.score + "</h2>" + 
+        "<h3> Your High Score:" + highScore + "</h3>" + 
         "<h4> Click to play again </h4>" + 
         "<span id='play-again' class='button' onClick='Game.playAgain()'> Play Again </span>");
     $(this.SELECTORS.overlay).show();
@@ -108,6 +112,14 @@ Render =  {
 
   score: function(n) {
     $(this.SELECTORS.score).html(n);
+  },
+
+  highScore: function() {
+    if(localStorage.getItem("_highscore")) {
+      $(this.SELECTORS.highscore).html(localStorage.getItem("_highscore"));
+    } else {
+      $(this.SELECTORS.highscore).html("0");
+    }
   }
 
 }
@@ -128,6 +140,7 @@ function liLoginClick()  {
 
 function onLinkedInLoad() {
   Render.loginButton();
+  Render.highScore();
 }
 
 function onLinkedInAuth() {
@@ -216,6 +229,7 @@ Game = {
 
           if(this.matchCount == this.peoplePerGame) {
             Render.overlayWin();
+            this.setHighScore(this.score);
           }
 
           Render.sidebarSuccess();
@@ -288,6 +302,14 @@ Game = {
     this.cards = this.shuffle(this.cards);
     Render.clearCards();
     Render.cards(this.cards);
+  },
+
+  setHighScore: function(n) {
+    var curScore = localStorage.getItem("_highscore");
+    curScore = curScore ? curScore : 0;
+    if (n > curScore) {
+      localStorage.setItem("_highscore", n);
+    }
   }
 }
 
