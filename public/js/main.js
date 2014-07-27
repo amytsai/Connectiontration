@@ -28,21 +28,31 @@ Render =  {
       var row = document.createElement("div");
       row.className = "row";
       for(var j = 0; j < this.cols; j++) {
-        $(row).append(this.card(cardArray[i*this.cols + j]));
+        var n = i*this.cols + j
+        $(row).append(this.card(cardArray[n], n));
       }
       $(this.SELECTORS.game).append(row);
     }
+
+    $(.card).bind("click", function() {
+      Game.selectCard(this);
+    })
   },
 
-  card: function(card) {
+  card: function(card, n) {
     var cardEl = document.createElement("div");
     cardEl.className = "card";
+    cardEl.id = "card-" + n;
+
+    var cardBack = document.createElement("div");
+    cardBack.className = "card-back"
+    cardEl.appendChild(cardBack);
     if(card.isPicture) {
       imgEl = document.createElement("img");
       imgEl.src = card.pictureUrl;
-      $(cardEl).append(imgEl);
+      $(cardBack).append(imgEl);
     } else {
-      $(cardEl).html(card.name);
+      $(cardBack).html(card.name);
     }
     return cardEl;
   }
@@ -129,6 +139,10 @@ Game = {
   shuffle: function(o) { 
       for(var j, x, i = o.length; i; j = Math.floor(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
       return o;
+  }
+
+  selectCard: function(cardEl) {
+    cardEl.visibility = "visible";
   }
 }
 

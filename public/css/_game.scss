@@ -1,5 +1,5 @@
 .row {
-	height: 120px;
+	height: 140px;
 }
 
 .card {
@@ -9,6 +9,10 @@
 	margin: 10px;
 	height: 120px;
 	width: 90px;
+
+	.card-back {
+		visibility: hidden;
+	}
 }
 
 .card:last-child:after {

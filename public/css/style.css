@@ -91,7 +91,7 @@ h4 {
       margin: 0 auto; }
 
 .row {
-  height: 120px; }
+  height: 140px; }
 
 .card {
   background-color: #81cfe0;
@@ -100,6 +100,8 @@ h4 {
   margin: 10px;
   height: 120px;
   width: 90px; }
+  .card .card-back {
+    visibility: hidden; }
 
 .card:last-child:after {
   clear: both; }
