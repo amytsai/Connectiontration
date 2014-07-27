@@ -91,12 +91,11 @@ Render =  {
   },  
 
   overlayWin: function() {
-    var modal = $(this.SELECTORS.overlay).find(".modal")[0];
-    modal.empty();
-    modal.html(
-      "<h1> Congratulations you win! </h1>" + 
-      "<h4> Click to play again </h4>" + 
-      "<span id='play-again' class='button' onClick='Game.playAgain()'> Play Again </span>");
+    $(this.SELECTORS.overlay).find(".modal")[0].empty();
+    $(this.SELECTORS.overlay).find(".modal")[0].html(
+        "<h1> Congratulations you win! </h1>" + 
+        "<h4> Click to play again </h4>" + 
+        "<span id='play-again' class='button' onClick='Game.playAgain()'> Play Again </span>");
   }
 
 }

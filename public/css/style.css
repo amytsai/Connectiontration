@@ -28,7 +28,13 @@ table {
   border-spacing: 0; }
 
 body {
-  background-image: url("/images/pw_pattern/pw_pattern.png"); }
+  background-image: url("/images/pw_pattern/pw_pattern.png");
+  -webkit-user-select: none;
+  /* Chrome/Safari */
+  -moz-user-select: none;
+  /* Firefox */
+  -ms-user-select: none;
+  /* IE10+ */ }
 
 .button {
   -webkit-border-radius: 12px;
