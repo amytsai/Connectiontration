@@ -188,40 +188,39 @@ Game = {
   },
 
   selectCard: function(cardEl) {
-    if($(cardEl).hasClass ="cleared") {
-      break;
-    }
+    if(!$(cardEl).hasClass("cleared")) {
 
-    cardEl.firstChild.style.visibility = "visible";
-    var id = this.parseId(cardEl);
-    var newCard = this.cards[id];
+      cardEl.firstChild.style.visibility = "visible";
+      var id = this.parseId(cardEl);
+      var newCard = this.cards[id];
 
-    //Render.sidebarAdd(newCard);
-    if(this.oldSelected && this.oldSelected != cardEl) {
-      this.clickCount++;
-      //unbind card click events for next click
-      $(".card").unbind("click");
-      var oldCard = this.cards[this.parseId(this.oldSelected)];
-      if(newCard.name === oldCard.name) {
-        this.matchCount++;
+      //Render.sidebarAdd(newCard);
+      if(this.oldSelected && this.oldSelected != cardEl) {
+        this.clickCount++;
+        //unbind card click events for next click
+        $(".card").unbind("click");
+        var oldCard = this.cards[this.parseId(this.oldSelected)];
+        if(newCard.name === oldCard.name) {
+          this.matchCount++;
 
-        if(this.matchCount == this.peoplePerGame) {
-          Render.overlayWin();
+          if(this.matchCount == this.peoplePerGame) {
+            Render.overlayWin();
+          }
+
+          Render.sidebarSuccess();
+          $(document).bind("click", $.proxy(function() {
+            this.successfulMatch(this.oldSelected, cardEl);
+          }, this));
+        } else {
+          Render.sidebarFail()
+          $(document).bind("click", $.proxy(function() {
+            this.failedMatch(this.oldSelected, cardEl);
+          }, this));
         }
-
-        Render.sidebarSuccess();
-        $(document).bind("click", $.proxy(function() {
-          this.successfulMatch(this.oldSelected, cardEl);
-        }, this));
       } else {
-        Render.sidebarFail()
-        $(document).bind("click", $.proxy(function() {
-          this.failedMatch(this.oldSelected, cardEl);
-        }, this));
+        this.clickCount++;
+        this.oldSelected = cardEl;
       }
-    } else {
-      this.clickCount++;
-      this.oldSelected = cardEl;
     }
   },
 
