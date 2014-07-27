@@ -8,7 +8,7 @@ Render =  {
   SELECTORS: {
     loginButton: "#loginButton",
     overlay: ".overlay",
-    game: "#game"
+    game: "#table"
   },
 
   loginButton: function() {

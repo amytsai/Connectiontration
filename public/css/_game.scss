@@ -2,32 +2,40 @@
 	height: 560px;
 	left: 50%;
 	margin-top: -280px;
-	margin-left: -330px;
+	margin-left: -440px;
 	position: fixed;
 	top: 50%;
-	width: 660px;
-	.row {
-		height: 140px;
-	}
+	width: 880px;
 
-	.card {
-		background-color: $light-blue;
-		display: inline-block;
-		float: left;
-		margin: 10px;
-		height: 120px;
-		width: 90px;
-
-		.card-back {
-			visibility: hidden;
+	#table {
+		.row {
+			height: 140px;
 		}
 
-		&.cleared {
-			background-color: $light-grey;
+		.card {
+			background-color: $light-blue;
+			display: inline-block;
+			float: left;
+			margin: 10px;
+			height: 120px;
+			width: 90px;
+
+			.card-back {
+				visibility: hidden;
+			}
+
+			&.cleared {
+				background-color: $light-grey;
+			}
+		}
+
+		.card:last-child:after {
+			clear: both;
 		}
 	}
 
-	.card:last-child:after {
-		clear: both;
+	#sidebar {
+		width: 220px;
+		background-color: $grey;
 	}
 }
