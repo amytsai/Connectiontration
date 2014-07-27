@@ -291,8 +291,8 @@ Game = {
   }
 }
 
-$(document).ready (
+$(document).ready (function() {
   if(typeof(Storage) == "undefined") {
     alert("Your browser does not support local storage, this may mean some features of connectiontration will be broken :(");
   }
-)
+})
