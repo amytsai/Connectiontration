@@ -37,7 +37,7 @@ Render =  {
 
     $(".card").bind("click", function() {
       Game.selectCard(this);
-    })
+    }, false)
   },
 
   card: function(card, n) {
@@ -225,7 +225,7 @@ Game = {
     $('body').unbind("mousedown");
     $(".card").bind("click", function() {
       Game.selectCard(this);
-    })
+    }, false)
   }
 }
 
