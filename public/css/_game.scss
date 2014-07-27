@@ -9,8 +9,8 @@
 	margin: 10px;
 	height: 120px;
 	width: 90px;
-
-	&:last-child:after {
-		clear: both;
-	}
 }
+
+.card:last-child:after {
+	clear: both;
+	}

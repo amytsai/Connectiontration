@@ -100,5 +100,6 @@ h4 {
   margin: 10px;
   height: 120px;
   width: 90px; }
-  .card:last-child:after {
-    clear: both; }
+
+.card:last-child:after {
+  clear: both; }
