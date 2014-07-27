@@ -182,14 +182,14 @@ Game = {
       var oldCard = this.cards[this.parseId(this.oldSelected)];
       if(newCard.name === oldCard.name) {
         Render.sidebarSuccess();
-        $(document).bind("click", function() {
+        $(document).bind("click", $.proxy(function() {
           this.successfulMatch(this.oldSelected, cardEl);
-        });
+        }, this);
       } else {
         Render.sidebarFail()
-        $(document).bind("click", function() {
+        $(document).bind("click", $.proxy(function() {
           this.failedMatch(this.oldSelected, cardEl);
-        });
+        }, this);
       }
     } else {
       this.oldSelected = cardEl;
