@@ -142,7 +142,7 @@ Game = {
   },
 
   selectCard: function(cardEl) {
-    $(cardEl).find(".card-back").style.visibility = "visible";
+    cardEl.firstChild.style.visibility = "visible";
   }
 }
 
