@@ -2,7 +2,7 @@
 /******* RENDERING HELPERS ********/
 
 Render =  {
-  rows: 5,
+  rows: 4,
   cols: 6,
 
   SELECTORS: {
@@ -90,7 +90,7 @@ Game = {
   connections: [],
   cards: [],
   location: 0,
-  peoplePerGame: 15,
+  peoplePerGame: 12,
 
   initialize: function(connections) {
     //TODO: Check whether the user has enough connections to start a game

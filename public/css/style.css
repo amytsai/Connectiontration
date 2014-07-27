@@ -89,3 +89,12 @@ h4 {
     .overlay .modal #loginButton {
       display: block;
       margin: 0 auto; }
+
+.row {
+  height: 120px; }
+
+.card {
+  background-color: #81cfe0;
+  display: inline-block;
+  height: 120px;
+  width: 90px; }
