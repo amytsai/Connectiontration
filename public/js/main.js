@@ -184,12 +184,12 @@ Game = {
         Render.sidebarSuccess();
         $(document).bind("click", $.proxy(function() {
           this.successfulMatch(this.oldSelected, cardEl);
-        }, this);
+        }, this));
       } else {
         Render.sidebarFail()
         $(document).bind("click", $.proxy(function() {
           this.failedMatch(this.oldSelected, cardEl);
-        }, this);
+        }, this));
       }
     } else {
       this.oldSelected = cardEl;
