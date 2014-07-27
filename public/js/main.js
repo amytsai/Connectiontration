@@ -120,6 +120,14 @@ Render =  {
     } else {
       $(this.SELECTORS.highscore).html("0");
     }
+  },
+
+  notEnoughConnections: function() {
+    $(this.SELECTORS.modal).empty();
+    $(this.SELECTORS.modal).html(
+      "<h2> Sorry, you don't have enough LinkedIn connections to play Connectiontration <h2>" + 
+      "<h4> <a href='http://linkedin.com'> Try adding more! </a> </h4>"
+      );
   }
 
 }
@@ -173,7 +181,10 @@ Game = {
   score: 1240,
 
   initialize: function(connections) {
-    //TODO: Check whether the user has enough connections to start a game
+    if(this.connections.length < 12) {
+      Render.notEnoughConnections();
+    }
+
     this.connections = this.shuffle(connections);
     var people = this.getNextPeople(this.peoplePerGame);
 
@@ -192,7 +203,7 @@ Game = {
     this.cards = this.shuffle(this.cards);
     Render.cards(this.cards);
     Render.score(this.score);
-    Render.highscore();
+    Render.highScore();
   },
 
   getNextPeople: function(n) {
@@ -303,7 +314,7 @@ Game = {
     }
     this.cards = this.shuffle(this.cards);
     Render.score()
-    Render.highscore();
+    Render.highScore();
     Render.clearCards();
     Render.cards(this.cards);
   },

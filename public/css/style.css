@@ -192,7 +192,7 @@ h4 {
       width: 200px;
       margin: 10px auto; }
     #game #more-info hr {
-      border-bottom: none;
+      border-bottom: 0px;
       border-style: solid;
-      border-color: #bdc3c7;
+      border-color: #657b83;
       margin: 1.5em; }
