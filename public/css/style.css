@@ -95,6 +95,7 @@ h4 {
   left: 50%;
   margin-left: -280px;
   margin-top: -330px;
+  position: fixed;
   top: 50%;
   width: 560px; }
   #game .row {
