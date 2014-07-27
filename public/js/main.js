@@ -158,7 +158,7 @@ Game = {
       }
     }
 
-    this.oldSelected = newSelected;
+    this.oldSelected = cardEl;
   },
 
   successfulMatch: function(card1, card2) {
