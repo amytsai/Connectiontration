@@ -9,7 +9,8 @@ Render =  {
     overlay: ".overlay",
     modal: ".modal",
     game: "#table",
-    sidebar: "#sidebar"
+    sidebar: "#sidebar",
+    score: "#score"
   },
 
   loginButton: function() {
@@ -102,6 +103,10 @@ Render =  {
         "<h4> Click to play again </h4>" + 
         "<span id='play-again' class='button' onClick='Game.playAgain()'> Play Again </span>");
     $(this.SELECTORS.overlay).show();
+  },
+
+  score: function(n) {
+    $(this.SELECTORS.score).html(n);
   }
 
 }
@@ -151,6 +156,7 @@ Game = {
   oldSelected: null,
   matchCount: 0,
   clickCount: 0,
+  score: 1240,
 
   initialize: function(connections) {
     //TODO: Check whether the user has enough connections to start a game
@@ -200,7 +206,7 @@ Game = {
 
       //Render.sidebarAdd(newCard);
       if(this.oldSelected && this.oldSelected != cardEl) {
-        this.clickCount++;
+        this.score -= 10;
         //unbind card click events for next click
         $(".card").unbind("click");
         var oldCard = this.cards[this.parseId(this.oldSelected)];
@@ -222,9 +228,10 @@ Game = {
           }, this));
         }
       } else {
-        this.clickCount++;
+        this.score -= 10;
         this.oldSelected = cardEl;
       }
+      Render.score(this.score);
     }
   },
 

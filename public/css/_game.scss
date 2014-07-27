@@ -48,6 +48,12 @@
 		margin: 10px;
 		width: 220px;
 
+		#score {
+			&:before {
+				content: "SCORE: "
+			}
+		}
+
 		.card-desc {
 			font-size: 1.5em;
 			width: 200px;
