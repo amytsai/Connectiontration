@@ -95,7 +95,7 @@ Game = {
   initialize: function(connections) {
     //TODO: Check whether the user has enough connections to start a game
     this.connections = this.shuffle(connections);
-    var people = this.getNextPeople(peoplePerGame);
+    var people = this.getNextPeople(this.peoplePerGame);
 
     for(var i = 0; i < peoplePerGame; i++) {
       var person = people[i];
