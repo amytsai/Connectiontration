@@ -290,3 +290,9 @@ Game = {
     Render.cards(this.cards);
   }
 }
+
+$(document).ready (
+  if(typeof(Storage) == "undefined") {
+    alert("Your browser does not support local storage, this may mean some features of connectiontration will be broken :(");
+  }
+)

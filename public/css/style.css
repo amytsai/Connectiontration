@@ -169,3 +169,18 @@ h4 {
       color: #1e824c; }
     #game #sidebar .fail {
       color: #d64541; }
+  #game #more-info {
+    -webkit-border-radius: 12px;
+    -moz-border-radius: 12px;
+    border-radius: 12px;
+    background-color: #a2ded0;
+    float: left;
+    height: 200px;
+    margin: 10px;
+    width: 220px; }
+    #game #more-info #high-score {
+      font-size: 1.3em;
+      font-weight: 400;
+      text-align: center;
+      margin: 10 auto;
+      width: 200px; }

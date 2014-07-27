@@ -86,4 +86,22 @@
 			color: $red;
 		}
 	}
+
+	#more-info {
+		@include border-radius(12px);
+		background-color: $aqua;
+		float: left;
+		height: 200px;
+		margin: 10px;
+		width: 220px;
+
+		#high-score {
+			font-size: 1.3em;
+			font-weight: 400;
+			text-align: center;
+			margin: 10 auto;
+			width: 200px;
+		}
+
+	}
 }
