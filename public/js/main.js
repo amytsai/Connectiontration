@@ -99,14 +99,15 @@ Game = {
 
     for(var i = 0; i < this.peoplePerGame; i++) {
       var person = people[i];
-      card = {
+      var card1 = {
         isPicture: false,
         name: person.firstName + " " + person.lastName,
         pictureUrl: person.pictureUrl
       }
-      this.cards.push(card);
-      card.isPicture = true;
-      this.cards.push(card);
+      this.cards.push(card1);
+      var card2 = jQuery.extend({}, card1);
+      card2.isPicture = true;
+      this.cards.push(card2);
     }
     this.cards = this.shuffle(this.cards);
     Render.cards(this.cards);
