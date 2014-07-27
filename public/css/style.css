@@ -94,25 +94,33 @@ h4 {
   height: 560px;
   left: 50%;
   margin-top: -280px;
-  margin-left: -440px;
+  margin-left: -450px;
   position: fixed;
   top: 50%;
-  width: 880px; }
-  #game #table .row {
-    height: 140px; }
-  #game #table .card {
-    background-color: #81cfe0;
-    display: inline-block;
+  width: 900px; }
+  #game #table {
+    float: left; }
+    #game #table .row {
+      height: 140px; }
+    #game #table .card {
+      background-color: #81cfe0;
+      display: inline-block;
+      float: left;
+      margin: 10px;
+      height: 120px;
+      width: 90px; }
+      #game #table .card .card-back {
+        visibility: hidden; }
+      #game #table .card.cleared {
+        background-color: #e2e2e2; }
+    #game #table .card:last-child:after {
+      clear: both; }
+  #game #sidebar {
+    -webkit-border-radius: 12px;
+    -moz-border-radius: 12px;
+    border-radius: 12px;
+    background-color: #bdc3c7;
     float: left;
     margin: 10px;
-    height: 120px;
-    width: 90px; }
-    #game #table .card .card-back {
-      visibility: hidden; }
-    #game #table .card.cleared {
-      background-color: #e2e2e2; }
-  #game #table .card:last-child:after {
-    clear: both; }
-  #game #sidebar {
-    width: 220px;
-    background-color: #bdc3c7; }
+    min-height: 420px;
+    width: 220px; }
