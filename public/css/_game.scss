@@ -1,24 +1,32 @@
-.row {
-	height: 140px;
+#game {
+	height: 660px;
+	left: 50%;
+	margin-left: -280px;
+	margin-top: -330px;
+	top: 50%;
+	width: 560px;
+	.row {
+		height: 140px;
+	}
+
+	.card {
+		background-color: $light-blue;
+		display: inline-block;
+		float: left;
+		margin: 10px;
+		height: 120px;
+		width: 90px;
+
+		.card-back {
+			visibility: hidden;
+		}
+
+		&.cleared {
+			background-color: $light-grey;
+		}
+	}
+
+	.card:last-child:after {
+		clear: both;
+	}
 }
-
-.card {
-	background-color: $light-blue;
-	display: inline-block;
-	float: left;
-	margin: 10px;
-	height: 120px;
-	width: 90px;
-
-	.card-back {
-		visibility: hidden;
-	}
-
-	&.cleared {
-		background-color: $light-grey;
-	}
-}
-
-.card:last-child:after {
-	clear: both;
-	}

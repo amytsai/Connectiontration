@@ -90,20 +90,25 @@ h4 {
       display: block;
       margin: 0 auto; }
 
-.row {
-  height: 140px; }
-
-.card {
-  background-color: #81cfe0;
-  display: inline-block;
-  float: left;
-  margin: 10px;
-  height: 120px;
-  width: 90px; }
-  .card .card-back {
-    visibility: hidden; }
-  .card.cleared {
-    background-color: #e2e2e2; }
-
-.card:last-child:after {
-  clear: both; }
+#game {
+  height: 660px;
+  left: 50%;
+  margin-left: -280px;
+  margin-top: -330px;
+  top: 50%;
+  width: 560px; }
+  #game .row {
+    height: 140px; }
+  #game .card {
+    background-color: #81cfe0;
+    display: inline-block;
+    float: left;
+    margin: 10px;
+    height: 120px;
+    width: 90px; }
+    #game .card .card-back {
+      visibility: hidden; }
+    #game .card.cleared {
+      background-color: #e2e2e2; }
+  #game .card:last-child:after {
+    clear: both; }

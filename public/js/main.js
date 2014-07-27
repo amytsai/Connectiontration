@@ -147,7 +147,7 @@ Game = {
     var id = this.parseId(cardEl);
     var newCard = this.cards[id];
 
-    if(this.oldSelected) {
+    if(this.oldSelected && this.oldSelected != cardEl) {
       var oldCard = this.cards[this.parseId(this.oldSelected)];
       if(newCard.name === oldCard.name) {
         this.successfulMatch(this.oldSelected, cardEl);
