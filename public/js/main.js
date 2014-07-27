@@ -60,6 +60,10 @@ Render =  {
     return cardEl;
   },
 
+  clearCards: function() {
+    $(this.SELECTORS.game).empty();
+  },
+
   sidebarAdd: function(card) {
     var newEl = document.createElement("div");
     newEl.className = "card-desc";
@@ -97,6 +101,7 @@ Render =  {
         "<h1> Congratulations you win! </h1>" + 
         "<h4> Click to play again </h4>" + 
         "<span id='play-again' class='button' onClick='Game.playAgain()'> Play Again </span>");
+    $(this.SELECTORS.overlay).show();
   }
 
 }
@@ -253,6 +258,7 @@ Game = {
   },
 
   playAgain: function() {
+    Render.hideOverlay();
     this.matchCount = 0;
     this.clickCount = 0;
     this.oldSelected = null;
@@ -271,6 +277,7 @@ Game = {
       this.cards.push(card2);
     }
     this.cards = this.shuffle(this.cards);
+    Render.clearCards();
     Render.cards(this.cards);
   }
 }

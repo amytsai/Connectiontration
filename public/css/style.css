@@ -95,6 +95,9 @@ h4 {
     .overlay .modal #loginButton {
       display: block;
       margin: 0 auto; }
+    .overlay .modal #play-again {
+      display: block;
+      margin: 20px auto; }
 
 #game {
   height: 560px;
