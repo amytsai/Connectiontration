@@ -116,7 +116,7 @@ Game = {
 
   getNextPeople: function(n) {
     //if we're out of cards, shuffle again
-    if(location + n > connections.length) {
+    if(location + n > this.connections.length) {
       this.connections = this.shuffle(this.connections);
       this.location = 0;
     }
