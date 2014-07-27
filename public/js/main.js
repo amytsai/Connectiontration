@@ -269,6 +269,7 @@ Game = {
     Render.hideOverlay();
     this.matchCount = 0;
     this.clickCount = 0;
+    this.score = 1240;
     this.oldSelected = null;
     var people = this.getNextPeople(this.peoplePerGame);
 
