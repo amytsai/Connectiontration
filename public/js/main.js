@@ -105,7 +105,7 @@ Game = {
         pictureUrl: person.pictureUrl
       }
       this.cards.push(card);
-      card[isPicture] = true;
+      card.isPicture = true;
       this.cards.push(card);
     }
     this.cards = this.shuffle(this.cards);
