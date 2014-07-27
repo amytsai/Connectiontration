@@ -135,7 +135,7 @@ function filterConnections(profiles) {
 function fetchLargeImage(filteredConnections) {
   var readyConnections = []
   for(var i = 0; i < filteredConnections.length; i++) {
-    var connection = filteredConnections[i]
+    var connection = filterConnections[i]
     connection.thumbnailUrl = connection.pictureUrl;
     IN.API.Raw("/people/" + connection.id + "/picture-urls::(original)")
     .result($.proxy(function(response) {
