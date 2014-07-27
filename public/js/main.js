@@ -83,6 +83,10 @@ Render =  {
     newEl.className = "fail";
     $(newEl).html("Not a Match");
     $(this.SELECTORS.sidebar).append(newEl);
+  },
+
+  sidebarClear: function() {
+    $(this.SELECTORS.sidebar).empty();
   }
 
 }
@@ -201,24 +205,27 @@ Game = {
     $(card2).empty();
     $(card1).addClass('cleared');
     $(card2).addClass('cleared');
-    this.oldSelected = null;
-    $(".card").bind("click", function() {
-      Game.selectCard(this);
-    })
+    this.cleanup();
   },
 
   failedMatch: function(card1, card2) {
     card1.firstChild.style.visibility = "hidden";
     card2.firstChild.style.visibility = "hidden";
-    this.oldSelected = null;
-    $(".card").bind("click", function() {
-      Game.selectCard(this);
-    })
+    this.cleanup();
   },
 
   parseId: function(cardEl) {
     var id = cardEl.id;
     return parseInt(id.substring(5));
+  },
+
+  cleanup: function() {
+    this.oldSelected = null;
+    Render.sidebarClear();
+    $(document).unbind("click");
+    $(".card").bind("click", function() {
+      Game.selectCard(this);
+    })
   }
 }
 
