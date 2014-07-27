@@ -133,10 +133,13 @@ h4 {
     #game #sidebar .success, #game #sidebar .fail {
       font-size: 2em;
       font-weight: 300;
-      margin: 10px auto; }
+      margin: 10px auto;
+      text-align: center;
+      width: 200px; }
       #game #sidebar .success:after, #game #sidebar .fail:after {
         content: "(click to continue)";
-        font-size: 1em;
+        display: block;
+        font-size: 12px;
         color: black; }
     #game #sidebar .success {
       color: #3fc380; }
