@@ -64,6 +64,10 @@ h2 {
   font-weight: 300;
   margin: .8em 0; }
 
+h3 {
+  font-size: 2em;
+  font-weight: 200; }
+
 h4 {
   font-size: 1.2em;
   font-weight: 300;
@@ -92,7 +96,7 @@ h4 {
     background-color: #4183d7; }
     .overlay .modal h1, .overlay .modal h2, .overlay .modal h4, .overlay .modal h5 {
       text-align: center; }
-    .overlay .modal h4 {
+    .overlay .modal h4, .overlay .modal h3 {
       color: #f5d76e; }
     .overlay .modal h5 {
       color: #e2e2e2;

@@ -105,7 +105,6 @@ Render =  {
         "<h1> Congratulations you win! </h1>" + 
         "<h2> Your Score:" + Game.score + "</h2>" + 
         "<h3> Your High Score:" + highScore + "</h3>" + 
-        "<h4> Click to play again </h4>" + 
         "<span id='play-again' class='button' onClick='Game.playAgain()'> Play Again </span>");
     $(this.SELECTORS.overlay).show();
   },
@@ -241,8 +240,8 @@ Game = {
           this.matchCount++;
 
           if(this.matchCount == this.peoplePerGame) {
-            Render.overlayWin();
             this.setHighScore(this.score);
+            Render.overlayWin();
           }
 
           Render.sidebarSuccess();
