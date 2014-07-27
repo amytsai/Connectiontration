@@ -1,9 +1,15 @@
 .row {
 	height: 120px;
+
+	&:after {
+		clear: both;
+	}
 }
 .card {
 	background-color: $light-blue;
 	display: inline-block;
+	float: left;
+	margin: 10px;
 	height: 120px;
 	width: 90px;
 }
