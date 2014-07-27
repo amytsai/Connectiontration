@@ -129,6 +129,7 @@ function filterConnections(profiles) {
       filteredConnections.push(member)
     }
   }
+  fetchLargeImage(filteredConnections);
 }
 
 function fetchLargeImage(filteredConnections) {
