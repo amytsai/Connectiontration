@@ -148,7 +148,7 @@ Game = {
     var newCard = this.cards[id];
 
     if(this.oldSelected) {
-      var oldCard = this.parseId(this.oldSelected);
+      var oldCard = this.cards[this.parseId(this.oldSelected)];
       if(newCard.name === oldCard.name) {
         this.successfulMatch(this.oldSelected, cardEl);
         this.oldSelected = null;
@@ -156,9 +156,9 @@ Game = {
         this.failedMatch(this.oldSelected, cardEl);
         this.oldSelected = null;
       }
+    } else {
+      this.oldSelected = cardEl;
     }
-
-    this.oldSelected = cardEl;
   },
 
   successfulMatch: function(card1, card2) {
