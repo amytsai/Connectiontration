@@ -110,6 +110,7 @@ h4 {
       height: 120px;
       width: 90px; }
       #game #table .card .card-back {
+        visibility: hidden;
         width: 80px;
         margin: 20px auto; }
       #game #table .card.cleared {
@@ -128,88 +129,3 @@ h4 {
     #game #sidebar .card-desc {
       width: 200px;
       margin: 10px auto; }
-
-/*  Loader by Saul Hardman */
-@-webkit-keyframes expand {
-  0% {
-    -webkit-transform: scale(0);
-    -moz-transform: scale(0);
-    transform: scale(0); }
-
-  50% {
-    -webkit-transform: scale(1);
-    -moz-transform: scale(1);
-    transform: scale(1); }
-
-  100% {
-    z-index: 1; } }
-@-moz-keyframes expand {
-  0% {
-    -webkit-transform: scale(0);
-    -moz-transform: scale(0);
-    transform: scale(0); }
-
-  50% {
-    -webkit-transform: scale(1);
-    -moz-transform: scale(1);
-    transform: scale(1); }
-
-  100% {
-    z-index: 1; } }
-@-ms-keyframes expand {
-  0% {
-    -webkit-transform: scale(0);
-    -moz-transform: scale(0);
-    transform: scale(0); }
-
-  50% {
-    -webkit-transform: scale(1);
-    -moz-transform: scale(1);
-    transform: scale(1); }
-
-  100% {
-    z-index: 1; } }
-@keyframes expand {
-  0% {
-    -webkit-transform: scale(0);
-    -moz-transform: scale(0);
-    transform: scale(0); }
-
-  50% {
-    -webkit-transform: scale(1);
-    -moz-transform: scale(1);
-    transform: scale(1); }
-
-  100% {
-    z-index: 1; } }
-.loader {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  margin: -20px 0 -20px;
-  background-color: white;
-  border-radius: 50%;
-  box-shadow: 0 0 0 6.66667px #141414;
-  height: 40px;
-  width: 40px; }
-  .loader:before, .loader:after {
-    content: "";
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    display: block;
-    margin: -21px 0 -21px;
-    border-radius: 50%;
-    z-index: 2;
-    height: 42px;
-    width: 42px; }
-  .loader:before {
-    background-color: #141414;
-    -webkit-animation: expand 1.6s linear infinite both;
-    -moz-animation: expand 1.6s linear infinite both;
-    animation: expand 1.6s linear infinite both; }
-  .loader:after {
-    background-color: white;
-    -webkit-animation: expand 1.6s linear 0.8s infinite both;
-    -moz-animation: expand 1.6s linear 0.8s infinite both;
-    animation: expand 1.6s linear 0.8s infinite both; }
