@@ -191,6 +191,7 @@ Game = {
     }
     this.cards = this.shuffle(this.cards);
     Render.cards(this.cards);
+    Render.score(this.score);
   },
 
   getNextPeople: function(n) {

@@ -177,20 +177,22 @@ h4 {
     float: left;
     height: 200px;
     margin: 10px;
-    width: 220px; }
+    width: 220px;
+    font-weight: 300;
+    text-align: center; }
     #game #more-info #high-score {
       font-size: 1.2em;
-      font-weight: 300;
-      text-align: center;
       margin: 10px auto;
       width: 200px; }
       #game #more-info #high-score:before {
         content: "HIGH SCORE: "; }
     #game #more-info #contact {
       color: #657b83;
+      font-size: 14px;
       width: 200px;
       margin: 10px auto; }
     #game #more-info hr {
+      border-bottom: none;
       border-style: solid;
-      border-color: #657b83;
-      margin: 1em; }
+      border-color: #bdc3c7;
+      margin: 1.5em; }

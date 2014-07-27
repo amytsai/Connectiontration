@@ -94,11 +94,11 @@
 		height: 200px;
 		margin: 10px;
 		width: 220px;
+		font-weight: 300;
+		text-align: center;
 
 		#high-score {
 			font-size: 1.2em;
-			font-weight: 300;
-			text-align: center;
 			margin: 10px auto;
 			width: 200px;
 
@@ -109,14 +109,16 @@
 
 		#contact {
 			color: $dark-grey;
+			font-size: 14px;
 			width: 200px;
 			margin: 10px auto;
 		}
 
 		hr {
+			border-bottom: none;
 			border-style: solid;
-			border-color: $dark-grey;
-			margin: 1em;
+			border-color: $grey;
+			margin: 1.5em;
 		}
 
 	}
