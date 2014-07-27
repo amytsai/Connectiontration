@@ -20,12 +20,17 @@
 		margin-top: -200px;
 		background-color: $blue;
 
-		h1, h4 {
+		h1, h4, h5 {
 			text-align: center;
 		}
 
 		h4 {
 			color: $yellow;
+		}
+
+		h5 {
+			color: $light-grey;
+			margin: .5em 0;
 		}
 
 		#loginButton {
