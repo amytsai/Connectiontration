@@ -29,9 +29,6 @@ table {
 
 body {
   background-image: url("images/pw_pattern/pw_pattern.png"); }
-  @media (-webkit-min-device-pixel-ratio: 1.5), (min-resolution: 144dpi) {
-    body {
-      background-image: url("images/pw_pattern/pw_pattern@2X.png"); } }
 
 .button {
   -webkit-border-radius: 12px;
