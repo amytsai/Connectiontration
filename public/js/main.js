@@ -97,7 +97,7 @@ Game = {
     this.connections = this.shuffle(connections);
     var people = this.getNextPeople(this.peoplePerGame);
 
-    for(var i = 0; i < peoplePerGame; i++) {
+    for(var i = 0; i < this.peoplePerGame; i++) {
       var person = people[i];
       card1 = {
         isPicture: false,
