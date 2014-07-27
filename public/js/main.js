@@ -37,7 +37,8 @@ Render =  {
 
     $(".card").bind("click", function() {
       Game.selectCard(this);
-    }, false)
+      return false;
+    })
   },
 
   card: function(card, n) {
