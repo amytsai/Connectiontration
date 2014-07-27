@@ -28,7 +28,7 @@ Render =  {
       var row = document.createElement("div");
       row.className = "row";
       for(var j = 0; j < this.cols; j++) {
-        $(row).append(this.card(cardArray[i*j + j]));
+        $(row).append(this.card(cardArray[i*this.cols + j]));
       }
       $(this.SELECTORS.game).append(row);
     }
@@ -39,10 +39,10 @@ Render =  {
     cardEl.className = "card";
     if(card.isPicture) {
       imgEl = document.createElement("img");
-      imgEl.src = card.content;
+      imgEl.src = card.pictureUrl;
       $(cardEl).append(imgEl);
     } else {
-      $(cardEl).html(card.content);
+      $(cardEl).html(card.name);
     }
     return cardEl;
   }
@@ -99,18 +99,16 @@ Game = {
 
     for(var i = 0; i < this.peoplePerGame; i++) {
       var person = people[i];
-      card1 = {
+      card = {
         isPicture: false,
-        content: person.firstName + " " + person.lastName
+        name: person.firstName + " " + person.lastName
+        pictureUrl: person.pictureUrl
       }
-      this.cards.push(card1);
-
-      card2= {
-        isPicture: true,
-        content: person.pictureUrl
-      }
-      this.cards.push(card2);
+      this.cards.push(card);
+      card[isPicture] = true;
+      this.cards.push(card);
     }
+    this.cards = this.shuffle(this.cards);
     Render.cards(this.cards);
   },
 
