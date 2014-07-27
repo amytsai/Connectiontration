@@ -9,7 +9,8 @@ Render =  {
     loginButton: "#loginButton",
     overlay: ".overlay",
     game: "#table",
-    sidebar: "#sidebar"
+    sidebar: "#sidebar",
+    loading: "#loading-text"
   },
 
   loginButton: function() {
@@ -26,6 +27,7 @@ Render =  {
   },
 
   cards: function(cardArray) {
+    $(this.SELECTORS.loading).hide();
     for(var i = 0; i < this.rows; i++) {
       var row = document.createElement("div");
       row.className = "row";
@@ -52,7 +54,7 @@ Render =  {
     cardEl.appendChild(cardBack);
     if(card.isPicture) {
       imgEl = document.createElement("img");
-      imgEl.src = card.pictureUrl;
+      imgEl.src = card.thumbnailUrl;
       $(cardBack).append(imgEl);
     } else {
       $(cardBack).html(card.name);
@@ -65,16 +67,12 @@ Render =  {
     newEl.className = "card-desc";
     if(card.isPicture) {
       imgEl = document.createElement("img");
-      IN.API.Raw("/people/" + card.id + "/picture-urls::(original)")
-        .result($.proxy(function(response) {
-          imgEl.src = response.values;
-          $(newEl).append(imgEl);
-          $(this.SELECTORS.sidebar).append(newEl);
-        }), this);
+      imgEl.src = card.pictureUrl;
+      $(newEl).append(imgEl);
     } else {
       $(newEl).html(card.name);
-      $(this.SELECTORS.sidebar).append(newEl);
     }
+    $(this.SELECTORS.sidebar).append(newEl);
     
   },
 
@@ -131,7 +129,19 @@ function filterConnections(profiles) {
       filteredConnections.push(member)
     }
   }
-  Game.initialize(filteredConnections);
+}
+
+function fetchLargeImage(filteredConnections) {
+  var readyConnections = []
+  for(var i = 0; i < filteredConnections.length; i++) {
+    connection.thumbnailUrl = connection.pictureUrl;
+    IN.API.Raw("/people/" + card.id + "/picture-urls::(original)")
+    .result($.proxy(function(response) {
+      connection.pictureUrl = response.values;
+      readyConnections.push(connection);
+    }), this);
+  }
+  Game.initialize(readyConnections);
 }
 
 /********* GAME LOGIC *********/
@@ -152,6 +162,7 @@ Game = {
       var card1 = {
         isPicture: false,
         name: person.firstName + " " + person.lastName,
+        thumbnailUrl: person.thumbnailUrl,
         pictureUrl: person.pictureUrl,
         id: person.id
       }
@@ -190,7 +201,7 @@ Game = {
     if(this.oldSelected != cardEl) {
       Render.sidebarAdd(newCard);
     }
-    
+
     if(this.oldSelected) {
       //unbind card click events for next click
       $(".card").unbind("click");
