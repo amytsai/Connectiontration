@@ -1,4 +1,4 @@
-
+$(document).ready(function() {
 /******* RENDERING HELPERS ********/
 
 Render =  {
@@ -89,6 +89,15 @@ Render =  {
 
   sidebarClear: function() {
     $(this.SELECTORS.sidebar).empty();
+  },  
+
+  overlayWin: function() {
+    var modal = $(this.SELECTORS.overlay).find(".modal")[0];
+    modal.empty();
+    modal.html(
+      "<h1> Congratulations you win! </h1>" + 
+      "<h4> Click to play again </h4>" + 
+      "<span id='play-again' class='button' onClick='Game.playAgain()'> Play Again </span>");
   }
 
 }
@@ -136,6 +145,8 @@ Game = {
   location: 0,
   peoplePerGame: 12,
   oldSelected: null,
+  matchCount: 0,
+  clickCount: 0,
 
   initialize: function(connections) {
     //TODO: Check whether the user has enough connections to start a game
@@ -177,16 +188,27 @@ Game = {
   },
 
   selectCard: function(cardEl) {
+    if($(cardEl).hasClass ="cleared") {
+      break;
+    }
+
     cardEl.firstChild.style.visibility = "visible";
     var id = this.parseId(cardEl);
     var newCard = this.cards[id];
 
     //Render.sidebarAdd(newCard);
     if(this.oldSelected && this.oldSelected != cardEl) {
+      this.clickCount++;
       //unbind card click events for next click
       $(".card").unbind("click");
       var oldCard = this.cards[this.parseId(this.oldSelected)];
       if(newCard.name === oldCard.name) {
+        this.matchCount++;
+
+        if(this.matchCount == this.peoplePerGame) {
+          Render.overlayWin();
+        }
+
         Render.sidebarSuccess();
         $(document).bind("click", $.proxy(function() {
           this.successfulMatch(this.oldSelected, cardEl);
@@ -198,6 +220,7 @@ Game = {
         }, this));
       }
     } else {
+      this.clickCount++;
       this.oldSelected = cardEl;
     }
   },
@@ -229,9 +252,29 @@ Game = {
       Game.selectCard(this);
       return false;
     })
+  },
+
+  playAgain: function() {
+    this.matchCount = 0;
+    this.clickCount = 0;
+    this.oldSelected = null;
+    var people = this.getNextPeople(this.peoplePerGame);
+
+    for(var i = 0; i < this.peoplePerGame; i++) {
+      var person = people[i];
+      var card1 = {
+        isPicture: false,
+        name: person.firstName + " " + person.lastName,
+        pictureUrl: person.pictureUrl
+      }
+      this.cards.push(card1);
+      var card2 = jQuery.extend({}, card1);
+      card2.isPicture = true;
+      this.cards.push(card2);
+    }
+    this.cards = this.shuffle(this.cards);
+    Render.cards(this.cards);
   }
 }
-
-$(document).ready(function() {
 
 });
