@@ -11,7 +11,7 @@ Render =  {
     game: "#table",
     sidebar: "#sidebar-content",
     score: "#score",
-    highscore: "#highscore"
+    highscore: "#high-score"
   },
 
   loginButton: function() {
