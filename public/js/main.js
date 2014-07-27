@@ -100,6 +100,7 @@ Render =  {
     $(this.SELECTORS.modal).empty();
     $(this.SELECTORS.modal).html(
         "<h1> Congratulations you win! </h1>" + 
+        "<h2> Your Score:" + Game.score + "</h2>" + 
         "<h4> Click to play again </h4>" + 
         "<span id='play-again' class='button' onClick='Game.playAgain()'> Play Again </span>");
     $(this.SELECTORS.overlay).show();
