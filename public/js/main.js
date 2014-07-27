@@ -293,7 +293,7 @@ Game = {
 
   playAgain: function() {
     Render.hideOverlay();
-    Render.highscore();
+    Render.highScore();
     this.matchCount = 0;
     this.clickCount = 0;
     this.score = 1240;
