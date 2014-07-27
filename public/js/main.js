@@ -7,6 +7,7 @@ Render =  {
   SELECTORS: {
     loginButton: "#loginButton",
     overlay: ".overlay",
+    modal: ".modal",
     game: "#table",
     sidebar: "#sidebar"
   },
@@ -91,8 +92,8 @@ Render =  {
   },  
 
   overlayWin: function() {
-    $(this.SELECTORS.overlay).find(".modal")[0].empty();
-    $(this.SELECTORS.overlay).find(".modal")[0].html(
+    $(this.SELECTORS.modal).empty();
+    $(this.SELECTORS.modal).html(
         "<h1> Congratulations you win! </h1>" + 
         "<h4> Click to play again </h4>" + 
         "<span id='play-again' class='button' onClick='Game.playAgain()'> Play Again </span>");
