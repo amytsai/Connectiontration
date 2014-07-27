@@ -226,6 +226,7 @@ Game = {
     $('body').unbind("mousedown");
     $(".card").bind("click", function() {
       Game.selectCard(this);
+      return false;
     })
   }
 }
