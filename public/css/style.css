@@ -99,7 +99,9 @@ h4 {
     .overlay .modal h1, .overlay .modal h2, .overlay .modal h3, .overlay .modal h4, .overlay .modal h5 {
       text-align: center; }
     .overlay .modal h4, .overlay .modal h3 {
-      color: #f5d76e; }
+      color: #f5d76e;
+      line-height: 1.3;
+      padding: 0 70px; }
     .overlay .modal h5 {
       color: #e2e2e2;
       margin: .5em 0; }
