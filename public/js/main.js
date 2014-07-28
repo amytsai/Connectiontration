@@ -215,27 +215,27 @@ Game = {
   initialize: function(connections) {
     if(this.connections.length < 12) {
       Render.notEnoughConnections();
-    }
+    } else {
+      this.connections = this.shuffle(connections);
+      var people = this.getNextPeople(this.peoplePerGame);
 
-    this.connections = this.shuffle(connections);
-    var people = this.getNextPeople(this.peoplePerGame);
-
-    for(var i = 0; i < this.peoplePerGame; i++) {
-      var person = people[i];
-      var card1 = {
-        isPicture: false,
-        name: person.firstName + " " + person.lastName,
-        pictureUrl: person.pictureUrl
+      for(var i = 0; i < this.peoplePerGame; i++) {
+        var person = people[i];
+        var card1 = {
+          isPicture: false,
+          name: person.firstName + " " + person.lastName,
+          pictureUrl: person.pictureUrl
+        }
+        this.cards.push(card1);
+        var card2 = jQuery.extend({}, card1);
+        card2.isPicture = true;
+        this.cards.push(card2);
       }
-      this.cards.push(card1);
-      var card2 = jQuery.extend({}, card1);
-      card2.isPicture = true;
-      this.cards.push(card2);
+      this.cards = this.shuffle(this.cards);
+      Render.cards(this.cards);
+      Render.score(this.score);
+      Render.highScore();
     }
-    this.cards = this.shuffle(this.cards);
-    Render.cards(this.cards);
-    Render.score(this.score);
-    Render.highScore();
   },
 
   getNextPeople: function(n) {
