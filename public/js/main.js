@@ -121,7 +121,7 @@ Render =  {
         "<h2> Your Score:" + Game.score + "</h2>" + 
         "<h3> Your High Score:" + highScore + "</h3>" + 
         "<span id='play-again' class='button' onClick='Game.playAgain()'> Play Again </span>");
-    $(this.SELECTORS.overlay).show();
+    $(this.SELECTORS.overlay).fadeIn(300);
   },
 
   score: function(n) {
