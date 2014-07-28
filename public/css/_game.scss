@@ -29,6 +29,7 @@
 		}
 
 		.card {
+			@include backface-visibility(hidden);
 			@include transform-style (preserve-3d);
 			@include transition(transform .5s);
 			background-color: $light-blue;
