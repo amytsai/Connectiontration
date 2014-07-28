@@ -42,9 +42,14 @@ Render =  {
         var n = i*this.cols + j
         $(row).append(this.card(cardArray[n], n));
       }
-      $(row).css("display", "none");
       $(this.SELECTORS.game).append(row);
-      $(row).fadeIn(300);
+
+      //fade in cards individually and randomly
+      $(".card").each(function() {
+        window.setTimeout($.proxy(function() {
+          this.fadeIn(generateRandom(300, 400));
+        }, this), generateRandom(0, 200))
+      })
     }
 
     $(".card").bind("click", function() {
@@ -68,6 +73,7 @@ Render =  {
     } else {
       $(cardBack).html(card.name);
     }
+    $(cardEl).css("display", "none");
     return cardEl;
   },
 
@@ -349,6 +355,12 @@ Game = {
       localStorage.setItem("_highscore", n);
     }
   }
+}
+
+/******** RANDOM UTIL FUNCTIONS ***********/
+
+function generateRandom(min, max) {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
 $(document).ready (function() {
