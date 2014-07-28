@@ -91,7 +91,7 @@
 		@include border-radius(12px);
 		background-color: $aqua;
 		float: left;
-		height: 200px;
+		height: 260px;
 		margin: 10px;
 		width: 220px;
 		font-weight: 300;
@@ -112,6 +112,15 @@
 			font-size: 14px;
 			width: 200px;
 			margin: 10px auto;
+		}
+
+		#instructions: {
+			width: 200px;
+			margin: 10px auto;
+
+			b {
+				font-weight: 400;
+			}
 		}
 
 		hr {
