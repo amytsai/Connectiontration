@@ -112,7 +112,8 @@ Game = {
     cardEl = cardEl.firstChild;
     if(!$(cardEl).hasClass("cleared") && this.oldSelected != cardEl) {
 
-      cardEl.firstChild.style.visibility = "visible";
+      //cardEl.firstChild.style.visibility = "visible";
+      $(cardEl).toggleClass("flipped");
       var id = this.parseId(cardEl);
       var newCard = this.cards[id];
 
@@ -160,8 +161,8 @@ Game = {
 
   //re-hide card back for non-matched cards
   failedMatch: function(card1, card2) {
-    card1.firstChild.style.visibility = "hidden";
-    card2.firstChild.style.visibility = "hidden";
+    $(card1).toggleClass("flipped");
+    $(card1).toggleClass("flipped");
     this.cleanup();
   },
 

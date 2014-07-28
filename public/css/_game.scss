@@ -12,14 +12,22 @@
 		width: 660px;
 		float: left;
 
-	  -webkit-user-select: none; /* Chrome/Safari */        
-		 -moz-user-select: none; /* Firefox */
+	  	-webkit-user-select: none; /* Chrome/Safari */        
+		-moz-user-select: none; /* Firefox */
 		-ms-user-select: none; /* IE10+ */
+
+		.card-container {
+			@include perspective(1000);
+
+			height: 120px;
+			width: 90px;
+		}
 		.row {
 			height: 140px;
 		}
 
 		.card {
+			@include backface-visibility(hidden);
 			background-color: $light-blue;
 			display: inline-block;
 			float: left;
@@ -29,9 +37,17 @@
 
 			.card-back {
 				visibility: hidden;
-				width: 80px;
+				width: 90px;
+				padding: 5px;
+				height: 190px;
 				margin: 20px auto;
 				text-align: center;
+
+				@include transform( rotateY(180deg) );
+			}
+
+			&.flipped {
+				transform: rotate( 180deg );
 			}
 
 			&.cleared {
