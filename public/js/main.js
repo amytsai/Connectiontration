@@ -69,7 +69,7 @@ Game = {
     }
   },
 
-  //creates a new "Deck" of 24 cards
+  //sets a new "Deck" of 24 cards for this game
   newDeck: function() {
     var people = this.getNextPeople(this.peoplePerGame);
 
@@ -88,6 +88,7 @@ Game = {
     this.cards = this.shuffle(this.cards);
   },
 
+  //gets the next n people from the array of all connections
   getNextPeople: function(n) {
     //if we're out of cards, shuffle again
     if(location + n > this.connections.length) {
@@ -106,6 +107,7 @@ Game = {
       return o;
   },
 
+  //logic for when a card has been clicked
   selectCard: function(cardEl) {
     if(!$(cardEl).hasClass("cleared") && this.oldSelected != cardEl) {
 
@@ -146,6 +148,7 @@ Game = {
     }
   },
 
+  //clear successfully matched cards
   successfulMatch: function(card1, card2) {
     $(card1).empty();
     $(card2).empty();
@@ -154,17 +157,20 @@ Game = {
     this.cleanup();
   },
 
+  //re-hide card back for non-matched cards
   failedMatch: function(card1, card2) {
     card1.firstChild.style.visibility = "hidden";
     card2.firstChild.style.visibility = "hidden";
     this.cleanup();
   },
 
+  //parse what position this card is in the array using its id
   parseId: function(cardEl) {
     var id = cardEl.id;
     return parseInt(id.substring(5));
   },
 
+  //clean up after attempted match
   cleanup: function() {
     this.oldSelected = null;
     Render.sidebarClear();
@@ -175,6 +181,7 @@ Game = {
     })
   },
 
+  //reset board to play again
   playAgain: function() {
     Render.hideOverlay();
     Render.highScore();
@@ -190,6 +197,7 @@ Game = {
     Render.cards(this.cards);
   },
 
+  //set high score in local storage
   setHighScore: function(n) {
     var curScore = localStorage.getItem("_highscore");
     curScore = curScore ? curScore : 0;
