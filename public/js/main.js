@@ -1,3 +1,204 @@
+/****** LANDING AND AUTHORIZATION *******/
+
+//logic for Log in / play button
+function liLoginClick()  {
+  if(IN.User && IN.User.isAuthorized()){
+    Render.hideOverlay();
+    onLinkedInAuth();
+  } else {
+    IN.User.authorize(function() {
+      Render.hideOverlay();
+      onLinkedInAuth();
+    });
+  }
+}
+
+//callback for linkedin api load
+function onLinkedInLoad() {
+  Render.hideLoading()
+  Render.loginButton();
+  Render.highScore();
+}
+
+//callback for linked in authorization
+function onLinkedInAuth() {
+  IN.API.Connections("me")
+    .fields("firstName", "lastName", "id", "pictureUrl")
+    .result(filterConnections);
+}
+
+//filter for connections that have a public first and last name and a profile picture
+function filterConnections(profiles) {
+  var filteredConnections = [];
+  members = profiles.values;
+  if(!members) {
+    Render.notEnoughConnections();
+  } else {
+    for(var i = 0; i < members.length; i++) {
+      member = members[i];
+      if(member.firstName != "private" && member.lastName != "private" && member.pictureUrl) {
+        filteredConnections.push(member)
+      }
+    }
+    Game.initialize(filteredConnections);
+  }
+}
+
+/********* GAME LOGIC *********/
+Game = {
+  connections: [],
+  cards: [],
+  location: 0,
+  peoplePerGame: 12,
+  oldSelected: null,
+  matchCount: 0,
+  clickCount: 0,
+  score: 1240,
+
+  //initialize game for the first time
+  //creates a deck of all filtered connectiosn for this session
+  initialize: function(connections) {
+    if(connections.length < 12) {
+      Render.notEnoughConnections();
+    } else {
+      this.connections = this.shuffle(connections);
+      this.newDeck();
+      Render.cards(this.cards);
+      Render.score(this.score);
+      Render.highScore();
+    }
+  },
+
+  //creates a new "Deck" of 24 cards
+  newDeck: function() {
+    var people = this.getNextPeople(this.peoplePerGame);
+
+    for(var i = 0; i < this.peoplePerGame; i++) {
+      var person = people[i];
+      var card1 = {
+        isPicture: false,
+        name: person.firstName + " " + person.lastName,
+        pictureUrl: person.pictureUrl
+      }
+      this.cards.push(card1);
+      var card2 = jQuery.extend({}, card1);
+      card2.isPicture = true;
+      this.cards.push(card2);
+    }
+    this.cards = this.shuffle(this.cards);
+  },
+
+  getNextPeople: function(n) {
+    //if we're out of cards, shuffle again
+    if(location + n > this.connections.length) {
+      this.connections = this.shuffle(this.connections);
+      this.location = 0;
+    }
+    var result = this.connections.slice(this.location, this.location + n)
+    this.location = this.location + n;
+    return result;
+  },
+
+  //+ Jonas Raoni Soares Silva
+  //@ http://jsfromhell.com/array/shuffle [v1.0]
+  shuffle: function(o) { 
+      for(var j, x, i = o.length; i; j = Math.floor(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
+      return o;
+  },
+
+  selectCard: function(cardEl) {
+    if(!$(cardEl).hasClass("cleared") && this.oldSelected != cardEl) {
+
+      cardEl.firstChild.style.visibility = "visible";
+      var id = this.parseId(cardEl);
+      var newCard = this.cards[id];
+
+      //Render.sidebarAdd(newCard);
+      if(this.oldSelected) {
+        this.score -= 10;
+        //unbind card click events for next click
+        $(".card").unbind("click");
+        var oldCard = this.cards[this.parseId(this.oldSelected)];
+        if(newCard.name === oldCard.name) {
+          this.matchCount++;
+
+          if(this.matchCount == this.peoplePerGame) {
+            this.setHighScore(this.score);
+            Render.overlayWin();
+          }
+          Render._match();
+          Render.sidebarSuccess();
+          $(document).bind("click", $.proxy(function() {
+            this.successfulMatch(this.oldSelected, cardEl);
+          }, this));
+        } else {
+          Render._nomatch();
+          Render.sidebarFail()
+          $(document).bind("click", $.proxy(function() {
+            this.failedMatch(this.oldSelected, cardEl);
+          }, this));
+        }
+      } else {
+        this.score -= 10;
+        this.oldSelected = cardEl;
+      }
+      Render.score(this.score);
+    }
+  },
+
+  successfulMatch: function(card1, card2) {
+    $(card1).empty();
+    $(card2).empty();
+    $(card1).addClass('cleared');
+    $(card2).addClass('cleared');
+    this.cleanup();
+  },
+
+  failedMatch: function(card1, card2) {
+    card1.firstChild.style.visibility = "hidden";
+    card2.firstChild.style.visibility = "hidden";
+    this.cleanup();
+  },
+
+  parseId: function(cardEl) {
+    var id = cardEl.id;
+    return parseInt(id.substring(5));
+  },
+
+  cleanup: function() {
+    this.oldSelected = null;
+    Render.sidebarClear();
+    $(document).unbind("click");
+    $(".card").bind("click", function() {
+      Game.selectCard(this);
+      return false;
+    })
+  },
+
+  playAgain: function() {
+    Render.hideOverlay();
+    Render.highScore();
+    this.matchCount = 0;
+    this.clickCount = 0;
+    this.score = 1240;
+    Render.score(this.score);
+    this.oldSelected = null;
+    this.cards = [];
+    this.newDeck();
+
+    Render.clearCards();
+    Render.cards(this.cards);
+  },
+
+  setHighScore: function(n) {
+    var curScore = localStorage.getItem("_highscore");
+    curScore = curScore ? curScore : 0;
+    if (n > curScore) {
+      localStorage.setItem("_highscore", n);
+    }
+  }
+}
+
 /******* RENDERING HELPERS ********/
 
 Render =  {
@@ -157,209 +358,6 @@ Render =  {
     })
   }
 
-}
-
-/****** LANDING AND AUTHORIZATION *******/
-
-function liLoginClick()  {
-  if(IN.User && IN.User.isAuthorized()){
-    Render.hideOverlay();
-    onLinkedInAuth();
-  } else {
-    IN.User.authorize(function() {
-      Render.hideOverlay();
-      onLinkedInAuth();
-    });
-  }
-}
-
-function onLinkedInLoad() {
-  Render.hideLoading()
-  Render.loginButton();
-  Render.highScore();
-}
-
-function onLinkedInAuth() {
-  IN.API.Connections("me")
-    .fields("firstName", "lastName", "id", "pictureUrl")
-    .result(filterConnections);
-}
-
-function filterConnections(profiles) {
-  var filteredConnections = [];
-  members = profiles.values;
-  if(!members) {
-    Render.notEnoughConnections();
-  } else {
-    for(var i = 0; i < members.length; i++) {
-      member = members[i];
-      if(member.firstName != "private" && member.lastName != "private" && member.pictureUrl) {
-        filteredConnections.push(member)
-      }
-    }
-    Game.initialize(filteredConnections);
-  }
-}
-
-/********* GAME LOGIC *********/
-Game = {
-  connections: [],
-  cards: [],
-  location: 0,
-  peoplePerGame: 12,
-  oldSelected: null,
-  matchCount: 0,
-  clickCount: 0,
-  score: 1240,
-
-  initialize: function(connections) {
-    if(connections.length < 12) {
-      Render.notEnoughConnections();
-    } else {
-      this.connections = this.shuffle(connections);
-      var people = this.getNextPeople(this.peoplePerGame);
-
-      for(var i = 0; i < this.peoplePerGame; i++) {
-        var person = people[i];
-        var card1 = {
-          isPicture: false,
-          name: person.firstName + " " + person.lastName,
-          pictureUrl: person.pictureUrl
-        }
-        this.cards.push(card1);
-        var card2 = jQuery.extend({}, card1);
-        card2.isPicture = true;
-        this.cards.push(card2);
-      }
-      this.cards = this.shuffle(this.cards);
-      Render.cards(this.cards);
-      Render.score(this.score);
-      Render.highScore();
-    }
-  },
-
-  getNextPeople: function(n) {
-    //if we're out of cards, shuffle again
-    if(location + n > this.connections.length) {
-      this.connections = this.shuffle(this.connections);
-      this.location = 0;
-    }
-    var result = this.connections.slice(this.location, this.location + n)
-    this.location = this.location + n;
-    return result;
-  },
-
-  //+ Jonas Raoni Soares Silva
-  //@ http://jsfromhell.com/array/shuffle [v1.0]
-  shuffle: function(o) { 
-      for(var j, x, i = o.length; i; j = Math.floor(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
-      return o;
-  },
-
-  selectCard: function(cardEl) {
-    if(!$(cardEl).hasClass("cleared") && this.oldSelected != cardEl) {
-
-      cardEl.firstChild.style.visibility = "visible";
-      var id = this.parseId(cardEl);
-      var newCard = this.cards[id];
-
-      //Render.sidebarAdd(newCard);
-      if(this.oldSelected) {
-        this.score -= 10;
-        //unbind card click events for next click
-        $(".card").unbind("click");
-        var oldCard = this.cards[this.parseId(this.oldSelected)];
-        if(newCard.name === oldCard.name) {
-          this.matchCount++;
-
-          if(this.matchCount == this.peoplePerGame) {
-            this.setHighScore(this.score);
-            Render.overlayWin();
-          }
-          Render._match();
-          Render.sidebarSuccess();
-          $(document).bind("click", $.proxy(function() {
-            this.successfulMatch(this.oldSelected, cardEl);
-          }, this));
-        } else {
-          Render._nomatch();
-          Render.sidebarFail()
-          $(document).bind("click", $.proxy(function() {
-            this.failedMatch(this.oldSelected, cardEl);
-          }, this));
-        }
-      } else {
-        this.score -= 10;
-        this.oldSelected = cardEl;
-      }
-      Render.score(this.score);
-    }
-  },
-
-  successfulMatch: function(card1, card2) {
-    $(card1).empty();
-    $(card2).empty();
-    $(card1).addClass('cleared');
-    $(card2).addClass('cleared');
-    this.cleanup();
-  },
-
-  failedMatch: function(card1, card2) {
-    card1.firstChild.style.visibility = "hidden";
-    card2.firstChild.style.visibility = "hidden";
-    this.cleanup();
-  },
-
-  parseId: function(cardEl) {
-    var id = cardEl.id;
-    return parseInt(id.substring(5));
-  },
-
-  cleanup: function() {
-    this.oldSelected = null;
-    Render.sidebarClear();
-    $(document).unbind("click");
-    $(".card").bind("click", function() {
-      Game.selectCard(this);
-      return false;
-    })
-  },
-
-  playAgain: function() {
-    Render.hideOverlay();
-    Render.highScore();
-    this.matchCount = 0;
-    this.clickCount = 0;
-    this.score = 1240;
-    Render.score(this.score);
-    this.oldSelected = null;
-    this.cards = []
-    var people = this.getNextPeople(this.peoplePerGame);
-
-    for(var i = 0; i < this.peoplePerGame; i++) {
-      var person = people[i];
-      var card1 = {
-        isPicture: false,
-        name: person.firstName + " " + person.lastName,
-        pictureUrl: person.pictureUrl
-      }
-      this.cards.push(card1);
-      var card2 = jQuery.extend({}, card1);
-      card2.isPicture = true;
-      this.cards.push(card2);
-    }
-    this.cards = this.shuffle(this.cards);
-    Render.clearCards();
-    Render.cards(this.cards);
-  },
-
-  setHighScore: function(n) {
-    var curScore = localStorage.getItem("_highscore");
-    curScore = curScore ? curScore : 0;
-    if (n > curScore) {
-      localStorage.setItem("_highscore", n);
-    }
-  }
 }
 
 /******** RANDOM UTIL FUNCTIONS ***********/
