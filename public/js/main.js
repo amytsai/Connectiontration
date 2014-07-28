@@ -285,8 +285,8 @@ Render =  {
     }
 
     var cardContainer = document.createElement("div");
-    cardEl.className = "card-container";
-    cardContainer.appendChild(cardEl)
+    cardContainer.className = "card-container";
+    cardContainer.appendChild(cardEl);
 
     return cardContainer;
   },
