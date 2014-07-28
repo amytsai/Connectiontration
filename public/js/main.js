@@ -286,6 +286,7 @@ Render =  {
 
     var cardContainer = document.createElement("div");
     cardContainer.className = "card-container";
+    $(cardContainer).css("display", "none");
     cardContainer.appendChild(cardEl);
 
     return cardContainer;
