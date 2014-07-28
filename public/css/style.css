@@ -153,6 +153,14 @@ b {
     #game #table .card {
       -webkit-backface-visibility: hidden;
       backface-visibility: hidden;
+      -webkit-transform-style: preserve-3d;
+      -moz-transform-style: preserve-3d;
+      -ms-transform-style: preserve-3d;
+      -o-transform-style: preserve-3d;
+      transform-style: preserve-3d;
+      -webkit-transition: -webkit-transform 0.5s;
+      -moz-transition: -moz-transform 0.5s;
+      transition: transform 0.5s;
       background-color: #81cfe0;
       height: 120px;
       width: 90px; }
