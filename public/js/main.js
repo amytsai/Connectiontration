@@ -6,6 +6,7 @@ Render =  {
 
   SELECTORS: {
     loginButton: "#loginButton",
+    loading: "#floatingBarsG",
     overlay: ".overlay",
     modal: ".modal",
     game: "#table",
@@ -27,6 +28,10 @@ Render =  {
 
   hideOverlay: function() {
     $(this.SELECTORS.overlay).fadeOut(200);
+  },
+
+  hideLoading: function() {
+    $(this.SELECTORS.loading).hide();
   },
 
   cards: function(cardArray) {
@@ -160,6 +165,7 @@ function liLoginClick()  {
 }
 
 function onLinkedInLoad() {
+  Render.hideLoading()
   Render.loginButton();
   Render.highScore();
 }

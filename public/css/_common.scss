@@ -33,10 +33,10 @@ body{
 	@include border-radius(12px);
 
 	background-color: $turquoise;
-	height: 25px;
+	height: 20px;
 	padding: 10px;
 	text-align: center;
-	width: 212px;
+	width: 200px;
 
 	&:hover {
 		background-color: $turquoise-hover;
