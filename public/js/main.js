@@ -11,7 +11,8 @@ Render =  {
     game: "#table",
     sidebar: "#sidebar-content",
     score: "#score",
-    highscore: "#high-score"
+    highscore: "#high-score",
+    banner: "#banner-match"
   },
 
   loginButton: function() {
@@ -24,7 +25,7 @@ Render =  {
   },
 
   hideOverlay: function() {
-    $(this.SELECTORS.overlay).hide(200);
+    $(this.SELECTORS.overlay).fadeOut(200);
   },
 
   cards: function(cardArray) {
@@ -127,6 +128,12 @@ Render =  {
       "<h2> Sorry, you don't have enough LinkedIn connections to play Connectiontration <h2>" + 
       "<h4> <a href='http://linkedin.com'> Try adding more! </a> </h4>"
       );
+  },
+
+  banner: function() {
+    $(this.SELECTORS.banner).fadeIn(300, function() {
+      $('#banner-match').fadeOut(700);
+    })
   }
 
 }
@@ -243,7 +250,7 @@ Game = {
             this.setHighScore(this.score);
             Render.overlayWin();
           }
-
+          Render.banner();
           Render.sidebarSuccess();
           $(document).bind("click", $.proxy(function() {
             this.successfulMatch(this.oldSelected, cardEl);

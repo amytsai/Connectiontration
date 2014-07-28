@@ -44,3 +44,14 @@
 		}
 	}
 }
+
+#banner-match {
+	display: none;
+	left: 50%;
+	margin-left: -90px;
+	position: fixed;
+	top: 50%;
+	z-index: 11;
+	color: $green;
+	font-size: 3em;
+}

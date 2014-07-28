@@ -110,6 +110,16 @@ h4 {
       display: block;
       margin: 20px auto; }
 
+#banner-match {
+  display: none;
+  left: 50%;
+  margin-left: -90px;
+  position: fixed;
+  top: 50%;
+  z-index: 11;
+  color: #1e824c;
+  font-size: 3em; }
+
 #game {
   height: 560px;
   left: 50%;
