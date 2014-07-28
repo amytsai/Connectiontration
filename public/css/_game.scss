@@ -57,10 +57,6 @@
 			&.flipped {
 				@include transform( rotateY( 180deg ));
 			}
-
-			&.cleared {
-				background-color: $light-grey;
-			}
 		}
 
 		.card:last-child:after {

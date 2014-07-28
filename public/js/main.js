@@ -152,10 +152,10 @@ Game = {
 
   //clear successfully matched cards
   successfulMatch: function(card1, card2) {
-    $(card1).empty();
-    $(card2).empty();
     $(card1).hide(300);
     $(card2).hide(300);
+    $(card1).toggleClass("cleared");
+    $(card2).toggleClass("cleared");
     this.cleanup();
   },
 

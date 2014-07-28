@@ -187,8 +187,6 @@ b {
         -ms-transform: rotateY(180deg);
         -o-transform: rotateY(180deg);
         transform: rotateY(180deg); }
-      #game #table .card.cleared {
-        background-color: #e2e2e2; }
     #game #table .card:last-child:after {
       clear: both; }
   #game #sidebar {
