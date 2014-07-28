@@ -220,7 +220,8 @@ h4 {
 #floatingBarsG {
   position: relative;
   width: 16px;
-  height: 20px; }
+  height: 20px;
+  margin: auto; }
 
 .blockG {
   position: absolute;
