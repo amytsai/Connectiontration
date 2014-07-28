@@ -165,10 +165,10 @@ b {
       height: 120px;
       width: 90px; }
       #game #table .card .card-back {
+        background-color: #81cfe0;
         width: 90px;
         padding: 5px;
-        height: 190px;
-        margin: 20px auto;
+        height: 120px;
         text-align: center;
         -webkit-transform: rotateY(180deg);
         -moz-transform: rotateY(180deg);

@@ -37,10 +37,10 @@
 			width: 90px;
 
 			.card-back {
+				background-color: $light-blue;
 				width: 90px;
 				padding: 5px;
-				height: 190px;
-				margin: 20px auto;
+				height: 120px;
 				text-align: center;
 
 				@include transform( rotateY(180deg) );
