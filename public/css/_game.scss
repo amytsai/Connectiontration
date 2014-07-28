@@ -47,7 +47,7 @@
 			}
 
 			&.flipped {
-				@include transform( rotate( 180deg ));
+				@include transform( rotateY( 180deg ));
 			}
 
 			&.cleared {

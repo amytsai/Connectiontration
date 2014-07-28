@@ -162,7 +162,7 @@ Game = {
   //re-hide card back for non-matched cards
   failedMatch: function(card1, card2) {
     $(card1).toggleClass("flipped");
-    $(card1).toggleClass("flipped");
+    $(card2).toggleClass("flipped");
     this.cleanup();
   },
 
