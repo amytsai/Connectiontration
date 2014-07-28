@@ -12,8 +12,8 @@ Render =  {
     sidebar: "#sidebar-content",
     score: "#score",
     highscore: "#high-score",
-    banner-match: "#banner-match",
-    banner-nomatch: "#banner-nomatch"
+    bannermatch: "#banner-match",
+    bannernomatch: "#banner-nomatch"
   },
 
   loginButton: function() {
@@ -132,13 +132,13 @@ Render =  {
   },
 
   _match: function() {
-    $(this.SELECTORS.banner-match).fadeIn(300, function() {
+    $(this.SELECTORS.bannermatch).fadeIn(300, function() {
       $('#banner-match').fadeOut(700);
     })
   },
 
   _nomatch: function() {
-    $(this.SELECTORS.banner-nomatch).fadeIn(300, function() {
+    $(this.SELECTORS.bannernomatch).fadeIn(300, function() {
       $('#banner-nomatch').fadeOut(700);
     })
   }

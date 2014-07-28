@@ -45,13 +45,19 @@
 	}
 }
 
-#banner-match {
+#banner {
 	display: none;
 	left: 50%;
 	margin-left: -190px;
 	position: fixed;
 	top: 50%;
 	z-index: 11;
-	color: $green;
-	font-size: 3em;
+	#banner-match {
+		color: $green;
+		font-size: 3em;
+	}
+	#banner-nomatch {
+		color: $red;
+		font-size: 2.5em;
+	}
 }
