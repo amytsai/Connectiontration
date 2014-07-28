@@ -39,11 +39,17 @@
 			.card-back {
 				background-color: $light-blue;
 				width: 90px;
-				padding: 5px;
-				height: 120px;
+				height: 100px;
+				padding: 10px 0;
 				text-align: center;
 
 				@include transform( rotateY(180deg) );
+			}
+
+			.card-front {
+				width: 90px;
+				height: 120px;
+				background-color: $light-blue;
 			}
 
 			&.flipped {

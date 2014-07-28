@@ -274,9 +274,13 @@ Render =  {
     cardEl.className = "card";
     cardEl.id = "card-" + n;
 
+    var cardFront = document.createElement("div");
+    cardFront.className = "card-front";
+    cardEl.appendChild(cardFront);
     var cardBack = document.createElement("div");
     cardBack.className = "card-back";
     cardEl.appendChild(cardBack);
+
     if(card.isPicture) {
       imgEl = document.createElement("img");
       imgEl.src = card.pictureUrl;

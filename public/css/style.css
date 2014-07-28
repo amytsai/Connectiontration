@@ -167,14 +167,18 @@ b {
       #game #table .card .card-back {
         background-color: #81cfe0;
         width: 90px;
-        padding: 5px;
-        height: 120px;
+        height: 100px;
+        padding: 10px 0;
         text-align: center;
         -webkit-transform: rotateY(180deg);
         -moz-transform: rotateY(180deg);
         -ms-transform: rotateY(180deg);
         -o-transform: rotateY(180deg);
         transform: rotateY(180deg); }
+      #game #table .card .card-front {
+        width: 90px;
+        height: 120px;
+        background-color: #81cfe0; }
       #game #table .card.flipped {
         -webkit-transform: rotateY(180deg);
         -moz-transform: rotateY(180deg);
