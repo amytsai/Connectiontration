@@ -142,6 +142,7 @@ Render =  {
       "<h2> Sorry, you don't have enough LinkedIn connections to play Connectiontration <h2>" + 
       "<h4> <a href='http://linkedin.com'> Try adding more! </a> </h4>"
       );
+    $(this.SELECTORS.overlay).fadeIn(300);
   },
 
   _match: function() {
