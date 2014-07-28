@@ -187,13 +187,17 @@ function onLinkedInAuth() {
 function filterConnections(profiles) {
   var filteredConnections = [];
   members = profiles.values;
-  for(var i = 0; i < members.length; i++) {
-    member = members[i];
-    if(member.firstName != "private" && member.lastName != "private" && member.pictureUrl) {
-      filteredConnections.push(member)
+  if(!members) {
+    Render.notEnoughConnections();
+  } else {
+    for(var i = 0; i < members.length; i++) {
+      member = members[i];
+      if(member.firstName != "private" && member.lastName != "private" && member.pictureUrl) {
+        filteredConnections.push(member)
+      }
     }
+    Game.initialize(filteredConnections);
   }
-  Game.initialize(filteredConnections);
 }
 
 /********* GAME LOGIC *********/
