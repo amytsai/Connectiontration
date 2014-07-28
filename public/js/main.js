@@ -252,14 +252,14 @@ Game = {
   },
 
   selectCard: function(cardEl) {
-    if(!$(cardEl).hasClass("cleared")) {
+    if(!$(cardEl).hasClass("cleared") && this.oldSelected != cardEl) {
 
       cardEl.firstChild.style.visibility = "visible";
       var id = this.parseId(cardEl);
       var newCard = this.cards[id];
 
       //Render.sidebarAdd(newCard);
-      if(this.oldSelected && this.oldSelected != cardEl) {
+      if(this.oldSelected) {
         this.score -= 10;
         //unbind card click events for next click
         $(".card").unbind("click");
