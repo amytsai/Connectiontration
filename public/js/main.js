@@ -42,7 +42,9 @@ Render =  {
         var n = i*this.cols + j
         $(row).append(this.card(cardArray[n], n));
       }
+      $(row).css("visibility", "hidden");
       $(this.SELECTORS.game).append(row);
+      $(row).fadeIn(300);
     }
 
     $(".card").bind("click", function() {
