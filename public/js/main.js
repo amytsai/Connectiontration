@@ -12,7 +12,8 @@ Render =  {
     sidebar: "#sidebar-content",
     score: "#score",
     highscore: "#high-score",
-    banner: "#banner-match"
+    banner-match: "#banner-match",
+    banner-nomatch: "#banner-nomatch"
   },
 
   loginButton: function() {
@@ -130,9 +131,15 @@ Render =  {
       );
   },
 
-  banner: function() {
-    $(this.SELECTORS.banner).fadeIn(300, function() {
+  _match: function() {
+    $(this.SELECTORS.banner-match).fadeIn(300, function() {
       $('#banner-match').fadeOut(700);
+    })
+  },
+
+  _nomatch: function() {
+    $(this.SELECTORS.banner-nomatch).fadeIn(300, function() {
+      $('#banner-nomatch').fadeOut(700);
     })
   }
 
@@ -250,12 +257,13 @@ Game = {
             this.setHighScore(this.score);
             Render.overlayWin();
           }
-          Render.banner();
+          Render._match();
           Render.sidebarSuccess();
           $(document).bind("click", $.proxy(function() {
             this.successfulMatch(this.oldSelected, cardEl);
           }, this));
         } else {
+          Render._nomatch();
           Render.sidebarFail()
           $(document).bind("click", $.proxy(function() {
             this.failedMatch(this.oldSelected, cardEl);
