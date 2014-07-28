@@ -213,7 +213,7 @@ Game = {
   score: 1240,
 
   initialize: function(connections) {
-    if(this.connections.length < 12) {
+    if(connections.length < 12) {
       Render.notEnoughConnections();
     } else {
       this.connections = this.shuffle(connections);
