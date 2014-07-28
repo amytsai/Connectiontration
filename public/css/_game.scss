@@ -18,9 +18,11 @@
 
 		.card-container {
 			@include perspective(1000);
-
+			display: inline-block;
+			float: left;
 			height: 120px;
 			width: 90px;
+			margin: 10px;
 		}
 		.row {
 			height: 140px;
@@ -29,14 +31,10 @@
 		.card {
 			@include backface-visibility(hidden);
 			background-color: $light-blue;
-			display: inline-block;
-			float: left;
-			margin: 10px;
 			height: 120px;
 			width: 90px;
 
 			.card-back {
-				visibility: hidden;
 				width: 90px;
 				padding: 5px;
 				height: 190px;
@@ -47,7 +45,7 @@
 			}
 
 			&.flipped {
-				transform: rotate( 180deg );
+				@include transform: rotate( 180deg );
 			}
 
 			&.cleared {
