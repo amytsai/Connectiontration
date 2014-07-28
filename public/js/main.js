@@ -154,8 +154,8 @@ Game = {
   successfulMatch: function(card1, card2) {
     $(card1).empty();
     $(card2).empty();
-    $(card1).addClass('cleared');
-    $(card2).addClass('cleared');
+    $(card1).hide(300);
+    $(card2).hide(300);
     this.cleanup();
   },
 
