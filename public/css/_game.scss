@@ -11,6 +11,10 @@
 		height: 560px;
 		width: 660px;
 		float: left;
+
+	  -webkit-user-select: none; /* Chrome/Safari */        
+		 -moz-user-select: none; /* Firefox */
+		-ms-user-select: none; /* IE10+ */
 		.row {
 			height: 140px;
 		}

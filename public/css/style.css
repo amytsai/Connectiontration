@@ -28,13 +28,7 @@ table {
   border-spacing: 0; }
 
 body {
-  background-image: url("/images/pw_pattern/pw_pattern.png");
-  -webkit-user-select: none;
-  /* Chrome/Safari */
-  -moz-user-select: none;
-  /* Firefox */
-  -ms-user-select: none;
-  /* IE10+ */ }
+  background-image: url("/images/pw_pattern/pw_pattern.png"); }
 
 .button {
   -webkit-border-radius: 12px;
@@ -138,7 +132,13 @@ b {
   #game #table {
     height: 560px;
     width: 660px;
-    float: left; }
+    float: left;
+    -webkit-user-select: none;
+    /* Chrome/Safari */
+    -moz-user-select: none;
+    /* Firefox */
+    -ms-user-select: none;
+    /* IE10+ */ }
     #game #table .row {
       height: 140px; }
     #game #table .card {
