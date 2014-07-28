@@ -109,6 +109,7 @@ Game = {
 
   //logic for when a card has been clicked
   selectCard: function(cardEl) {
+    cardEl = cardEl.firstChild;
     if(!$(cardEl).hasClass("cleared") && this.oldSelected != cardEl) {
 
       cardEl.firstChild.style.visibility = "visible";
@@ -119,7 +120,7 @@ Game = {
       if(this.oldSelected) {
         this.score -= 10;
         //unbind card click events for next click
-        $(".card").unbind("click");
+        $(".card-container").unbind("click");
         var oldCard = this.cards[this.parseId(this.oldSelected)];
         if(newCard.name === oldCard.name) {
           this.matchCount++;
@@ -175,7 +176,7 @@ Game = {
     this.oldSelected = null;
     Render.sidebarClear();
     $(document).unbind("click");
-    $(".card").bind("click", function() {
+    $(".card-container").bind("click", function() {
       Game.selectCard(this);
       return false;
     })
@@ -254,14 +255,14 @@ Render =  {
       $(this.SELECTORS.game).append(row);
 
       //fade in cards individually and randomly
-      $(".card").each(function() {
+      $(".card-container").each(function() {
         window.setTimeout($.proxy(function() {
           $(this).fadeIn(generateRandom(300, 400));
         }, this), generateRandom(0, 200))
       })
     }
 
-    $(".card").bind("click", function() {
+    $(".card-container").bind("click", function() {
       Game.selectCard(this);
       return false;
     })
@@ -282,8 +283,12 @@ Render =  {
     } else {
       $(cardBack).html(card.name);
     }
-    $(cardEl).css("display", "none");
-    return cardEl;
+
+    var cardContainer = document.createElement("div");
+    cardEl.className = "card-container";
+    cardContainer.appendChild(cardEl)
+
+    return cardContainer;
   },
 
   clearCards: function() {
