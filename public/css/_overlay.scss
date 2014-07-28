@@ -46,12 +46,15 @@
 }
 
 #banner {
-	display: none;
-	left: 50%;
-	margin-left: -190px;
-	position: fixed;
-	top: 50%;
-	z-index: 11;
+	#banner-match, #banner-nomatch {
+		display: none;
+		left: 50%;
+		margin-left: -190px;
+		position: fixed;
+		top: 50%;
+		z-index: 11;
+
+	}
 	#banner-match {
 		color: $green;
 		font-size: 3em;
