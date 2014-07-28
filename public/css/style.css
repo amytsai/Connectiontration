@@ -163,9 +163,9 @@ b {
       width: 90px; }
       #game #table .card .card-back {
         background-color: #81cfe0;
-        width: 90px;
+        width: 80px;
         height: 100px;
-        padding: 10px 0;
+        padding: 10px 5px;
         text-align: center;
         -webkit-backface-visibility: hidden;
         backface-visibility: hidden;

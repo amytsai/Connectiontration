@@ -36,9 +36,9 @@
 
 			.card-back {
 				background-color: $light-blue;
-				width: 90px;
+				width: 80px;
 				height: 100px;
-				padding: 10px 0;
+				padding: 10px 5px;
 				text-align: center;
 
 				@include backface-visibility(hidden);
