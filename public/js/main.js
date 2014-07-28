@@ -366,15 +366,24 @@ Render =  {
   },
 
   _match: function() {
-    $(this.SELECTORS.bannermatch).fadeIn(300, function() {
-      $('#banner-match').fadeOut(700);
-    })
+    window.setTimeout(function(self) {
+      $(self.SELECTORS.bannermatch).fadeIn(300, function() {
+        $('#banner-match').fadeOut(700);
+      })},
+      400,
+      this
+    );
   },
 
   _nomatch: function() {
-    $(this.SELECTORS.bannernomatch).fadeIn(300, function() {
-      $('#banner-nomatch').fadeOut(700);
-    })
+    window.setTimeout(function(self) {
+      $(self.SELECTORS.bannernomatch).fadeIn(300, function() {
+        $('#banner-nomatch').fadeOut(700);
+      })},
+      400,
+      this
+    );
+
   }
 
 }
