@@ -165,7 +165,7 @@ transform:rotate(-135deg);
 
 @-moz-keyframes fadeG{
 0%{
-background-color:#000000}
+background-color:$blue}
 
 100%{
 background-color:#FFFFFF}
@@ -174,7 +174,7 @@ background-color:#FFFFFF}
 
 @-webkit-keyframes fadeG{
 0%{
-background-color:#000000}
+background-color:$blue}
 
 100%{
 background-color:#FFFFFF}
@@ -183,7 +183,7 @@ background-color:#FFFFFF}
 
 @-ms-keyframes fadeG{
 0%{
-background-color:#000000}
+background-color:$blue}
 
 100%{
 background-color:#FFFFFF}
@@ -192,7 +192,7 @@ background-color:#FFFFFF}
 
 @-o-keyframes fadeG{
 0%{
-background-color:#000000}
+background-color:$blue}
 
 100%{
 background-color:#FFFFFF}
@@ -201,7 +201,7 @@ background-color:#FFFFFF}
 
 @keyframes fadeG{
 0%{
-background-color:#000000}
+background-color:$blue}
 
 100%{
 background-color:#FFFFFF}

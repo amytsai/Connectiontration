@@ -375,31 +375,31 @@ h4 {
 
 @-moz-keyframes fadeG {
   0% {
-    background-color: #000000; }
+    background-color: #4183d7; }
 
   100% {
     background-color: #FFFFFF; } }
 @-webkit-keyframes fadeG {
   0% {
-    background-color: #000000; }
+    background-color: #4183d7; }
 
   100% {
     background-color: #FFFFFF; } }
 @-ms-keyframes fadeG {
   0% {
-    background-color: #000000; }
+    background-color: #4183d7; }
 
   100% {
     background-color: #FFFFFF; } }
 @-o-keyframes fadeG {
   0% {
-    background-color: #000000; }
+    background-color: #4183d7; }
 
   100% {
     background-color: #FFFFFF; } }
 @keyframes fadeG {
   0% {
-    background-color: #000000; }
+    background-color: #4183d7; }
 
   100% {
     background-color: #FFFFFF; } }

@@ -47,7 +47,7 @@ Render =  {
       //fade in cards individually and randomly
       $(".card").each(function() {
         window.setTimeout($.proxy(function() {
-          this.fadeIn(generateRandom(300, 400));
+          $(this).fadeIn(generateRandom(300, 400));
         }, this), generateRandom(0, 200))
       })
     }
