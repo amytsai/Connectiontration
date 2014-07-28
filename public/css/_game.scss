@@ -113,6 +113,10 @@
 			font-size: 14px;
 			width: 200px;
 			margin: 10px auto;
+
+			a {
+				color: $dark-grey;
+			}
 		}
 
 		#instructions {

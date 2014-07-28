@@ -215,6 +215,8 @@ b {
       font-size: 14px;
       width: 200px;
       margin: 10px auto; }
+      #game #more-info #contact a {
+        color: #657b83; }
     #game #more-info #instructions {
       width: 200px;
       margin: 10px auto; }
